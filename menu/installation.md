@@ -16,7 +16,7 @@ Use the following links to install the newest versions of Base-R und RStudio.
 <a href="https://cran.r-project.org/bin/macosx/base/R-4.1.1.pkg">Mac</a>
 
 ### Install RStudio
-<a href="https://download1.rstudio.org/desktop/windows/RStudio-1.4.1717.exe>Windows</a><br>
+<a href="https://download1.rstudio.org/desktop/windows/RStudio-1.4.1717.exe">Windows</a><br>
 <a href="https://download1.rstudio.org/desktop/macos/RStudio-1.4.1717.dmg">Mac</a>
 
 ## 2 - Install necessary packages
