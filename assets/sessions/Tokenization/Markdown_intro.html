@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Markdown</title>
+    <meta charset="utf-8" />
+    <meta name="author" content=" Natural language processing" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="baselrbootcamp.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Markdown
+### <a href='https://dwulff.github.io/NLP_2020Autumn'> Natural language processing </a> <br> <a href='https://dwulff.github.io/NLP_2020Autumn/menu/materials.html'> <i class='fas fa-clock' style='font-size:.9em;'></i> </a>  <a href='https://dwulff.github.io/NLP_2020Autumn'> <i class='fas fa-home' style='font-size:.9em;' ></i> </a>  <a href='mailto:dirk.wulff@unibas.ch'> <i class='fas fa-envelope' style='font-size: .9em;'></i>
+### September 2020
+
+---
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;
+  &lt;span style="text-align:center"&gt;
+    &lt;span&gt; 
+      &lt;img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/&gt;
+    &lt;/span&gt;
+    &lt;a href="https://cdsbasel.github.io/dataanalytics/"&gt;
+      &lt;span style="padding-left:82px"&gt; 
+        &lt;font color="#7E7E7E"&gt;
+          cdsbasel.github.io/dataanalytics/
+        &lt;/font&gt;
+      &lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a href="https://cdsbasel.github.io/dataanalytics/"&gt;
+      &lt;font color="#7E7E7E"&gt;
+       Data Analytics for Psychology and Business | April 2019
+      &lt;/font&gt;
+    &lt;/a&gt;
+    &lt;/span&gt;
+  &lt;/div&gt; 
+
+---
+
+
+
+# Was ist Markdown?
+
+.pull-left4[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Entwickelt von John Gruber and Aaron Swartz in 2004.&lt;br&gt;&lt;br&gt;
+  "&lt;high&gt;easy-to-read&lt;/high&gt; and &lt;high&gt;easy-to-write&lt;/high&gt; plain text format, [...] convert it to structurally valid XHTML (or HTML)"&lt;/span&gt;&lt;/li&gt; 
+  &lt;li class="m2"&gt;&lt;span&gt;Einfache &lt;high&gt;Syntax für die Gestaltung&lt;/high&gt; von Dokumenten.&lt;/span&gt;&lt;/li&gt;  
+  &lt;ul&gt;
+    &lt;li&gt;&lt;span&gt;Text in fett und kursiv&lt;/span&gt;&lt;/li&gt;   
+    &lt;li&gt;&lt;span&gt;Listen&lt;/span&gt;&lt;/li&gt;  
+    &lt;li&gt;&lt;span&gt;Überschriften&lt;/span&gt;&lt;/li&gt; 
+    &lt;li&gt;&lt;span&gt;Links&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Bilder&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right5[
+
+&lt;br&gt;
+
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown.png" width=400px&gt;&lt;br&gt;
+  &lt;font style="font-size:10px"&gt;from &lt;a href="https://de.wikipedia.org/wiki/Markdown"&gt;wikipedia.org&lt;/a&gt;&lt;/font&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# Was ist R Markdown?
+
+.pull-left4[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Verwendet Markdown zum &lt;high&gt;Gestalten dynamischer Dokumente&lt;/high&gt; mit eingebetteten...&lt;/span&gt;&lt;/li&gt;&lt;br&gt; 
+  &lt;ul&gt;
+    &lt;li&gt;&lt;span&gt;R code chunks&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;R inline code&lt;/span&gt;&lt;/li&gt;   
+    &lt;li&gt;&lt;span&gt;Statistischen Outputs&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Tabellen&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Visualisierungen&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;etc.&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right5[
+
+&lt;p align = "center"&gt;
+  &lt;img src="image/hex.png" height=300&gt;&lt;br&gt;
+  &lt;font style="font-size:10px"&gt;from &lt;a href="https://rmarkdown.rstudio.com/docs/"&gt;rmarkdown.rstudio.com&lt;/a&gt;&lt;/font&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+.pull-left3[
+
+# Arten des Berichts
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;RMarkdown ermöglicht Erstellung und Gestaltung unterschiedlicher &lt;high&gt;Berichttypen&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;span&gt;Dokumente&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Präsentationen&lt;/span&gt;&lt;/li&gt;   
+    &lt;li&gt;&lt;span&gt;Dashboards (Cockpits)&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Bücher&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Webseiten&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;etc.&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right6[
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;p align = "center"&gt;
+  &lt;img src="image/types.png"&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# R Markdown Komponenten
+
+.pull-left4[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;RMarkdown Skripte bestehen aus mehreren &lt;high&gt;Komponenten&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:10px" width=100%&gt;
+  &lt;col width="40%"&gt;
+  &lt;col width="60%"&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Komponente&lt;/b&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;YAML&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;b&gt;Y&lt;/b&gt;AML &lt;b&gt;A&lt;/b&gt;in't &lt;b&gt;M&lt;/b&gt;arkup &lt;b&gt;L&lt;/b&gt;anguage&lt;br&gt;&lt;br&gt;
+  &lt;high&gt;Dokumenteinstellungen&lt;/high&gt;
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;Setup chunk&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;high&gt;Chunks&lt;/high&gt; einstellen&lt;br&gt;
+  &lt;high&gt;Pakete&lt;/high&gt; laden&lt;br&gt;
+  &lt;high&gt;Daten&lt;/high&gt; laden
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;Markdown&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;high&gt;Überschriften&lt;/high&gt;&lt;br&gt;
+  &lt;high&gt;Text&lt;/high&gt; mit Hervorhebungen
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;Code chunk&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  R &lt;high&gt;Code&lt;/high&gt;&lt;br&gt;
+  R &lt;high&gt;Outputs&lt;high&gt;
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;/table&gt;
+
+]
+
+.pull-right5[
+
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_templ.png" height=400px&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# Pipeline
+
+.pull-left4[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;RMarkdown kann in verschiedene &lt;high&gt;Dateitypen&lt;/high&gt; übersetzt werden.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+    &lt;ul&gt;
+    &lt;li&gt;&lt;span&gt;PDF&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;HTML&lt;/span&gt;&lt;/li&gt;   
+    &lt;li&gt;&lt;span&gt;Word&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;PowerPoint&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;&lt;br&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Für die Übersetzung wird &lt;high&gt;RMarkdown mehrfach übersetzt&lt;/high&gt;, was gewisse Einschränkungen mit sich bringt.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right5[
+
+&lt;p align = "center"&gt;
+  &lt;img src="image/pipeline.png"&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# HTML Pipeline
+
+.pull-left4[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;HTML ist der &lt;high&gt;universelle Framework&lt;/high&gt; für Dokumente, Präsentationen, und v.a. Dashboards.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;&lt;high&gt;Export zu PDF&lt;/high&gt; ist, mit minimalen Einschränkungen, möglich.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right5[
+
+&lt;p align = "center"&gt;
+  &lt;img src="image/pipeline2.png"&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# HTML
+
+.pull-left3[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;&lt;b&gt;H&lt;/b&gt;yper&lt;b&gt;T&lt;/b&gt;ext &lt;b&gt;M&lt;/b&gt;arkup &lt;b&gt;L&lt;/b&gt;anguage.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Das Format des &lt;high&gt;World Wide Webs&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3"&gt;&lt;span&gt;Kann komfortabel durch &lt;high&gt;CSS&lt;/high&gt; (Cascading Style Sheets) formartiert werden.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right6[
+
+&lt;br&gt;
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_templ_html.png"&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# R Markdown
+
+.pull-left3[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;HTML ist der &lt;high&gt;universelle Framework&lt;/high&gt; für Dokumente, Präsentationen, und v.a. Dashboards.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;&lt;high&gt;Export zu PDF&lt;/high&gt; ist, mit minimalen Einschränkungen, möglich.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right6[
+
+&lt;br&gt;
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_trans.png"&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# Überschriften
+
+.pull-left3[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Überschriften verschiedener &lt;high&gt;Ebenen&lt;/high&gt; werden durch verschieden viele &lt;mono&gt;#&lt;/mono&gt; ausgedrückt.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%&gt;
+  &lt;col width="40%"&gt;
+  &lt;col width="60%"&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Markdown&lt;/b&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;# text&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Ebene 1
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;## text&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Ebene 2
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;...&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  ...
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;##### txt&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Ebene 5
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;/table&gt;
+
+]
+
+.pull-right6[
+
+&lt;br&gt;
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_trans_2.png"&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# Überschriften
+
+.pull-left3[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Überschriften verschiedener &lt;high&gt;Ebenen&lt;/high&gt; werden durch verschieden viele &lt;mono&gt;#&lt;/mono&gt; ausgedrückt.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%&gt;
+  &lt;col width="40%"&gt;
+  &lt;col width="60%"&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Markdown&lt;/b&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;# text&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Ebene 1
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;## text&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Ebene 2
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;...&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  ...
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;##### txt&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Ebene 5
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;/table&gt;
+
+]
+
+.pull-right6[
+
+&lt;br&gt;
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_trans_3.png"&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# Hervorhebung
+
+.pull-left3[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Verschiedene Zeichen erlauben &lt;high&gt;text- und code-bezogene&lt;/high&gt; Hervorhebungen.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%&gt;
+  &lt;col width="50%"&gt;
+  &lt;col width="50%"&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Markdown&lt;/b&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Kursiv
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &amp;ast;&amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;&amp;ast;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Fett
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &amp;ast;&amp;ast;&amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;&amp;ast;&amp;ast;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Kursiv und Fett 
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &amp;grave;&lt;mono&gt;text&lt;/mono&gt;&amp;grave;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Code
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &amp;grave;&lt;mono&gt;r "text"&lt;/mono&gt;&amp;grave;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  inline Code
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;/table&gt;
+
+]
+
+.pull-right6[
+
+&lt;br&gt;
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_trans_5.png"&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# Hervorhebung
+
+.pull-left3[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Verschiedene Zeichen erlauben &lt;high&gt;text- und code-bezogene&lt;/high&gt; Hervorhebungen.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%&gt;
+  &lt;col width="50%"&gt;
+  &lt;col width="50%"&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Markdown&lt;/b&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Kursiv
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &amp;ast;&amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;&amp;ast;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Fett
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &amp;ast;&amp;ast;&amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;&amp;ast;&amp;ast;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Kursiv und Fett 
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &amp;grave;&lt;mono&gt;text&lt;/mono&gt;&amp;grave;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Code
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &amp;grave;&lt;mono&gt;r "text"&lt;/mono&gt;&amp;grave;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  inline Code
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;/table&gt;
+
+]
+
+.pull-right6[
+
+&lt;br&gt;
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_trans_4.png"&gt;
+&lt;/p&gt;
+
+]
+
+
+---
+
+# Hervorhebung
+
+.pull-left3[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Verschiedene Zeichen erlauben &lt;high&gt;text- und code-bezogene&lt;/high&gt; Hervorhebungen.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%&gt;
+  &lt;col width="50%"&gt;
+  &lt;col width="50%"&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Markdown&lt;/b&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Kursiv
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &amp;ast;&amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;&amp;ast;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Fett
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &amp;ast;&amp;ast;&amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;&amp;ast;&amp;ast;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Kursiv und Fett 
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &amp;grave;&lt;mono&gt;text&lt;/mono&gt;&amp;grave;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Code
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &amp;grave;&lt;mono&gt;r "text"&lt;/mono&gt;&amp;grave;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  inline Code
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;/table&gt;
+
+]
+
+
+.pull-right6[
+
+&lt;br&gt;
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_trans_6.png"&gt;
+&lt;/p&gt;
+
+]
+
+
+---
+
+# Inline Code
+
+.pull-left3[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;&lt;high&gt;Zahlen und Wörter&lt;/high&gt; im Text können durch inline Code parametrisiert werden.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;inline Code kann wie ein &lt;high&gt;Code &lt;mono&gt;chunks&lt;/mono&gt;&lt;/high&gt; beliebigen R Code enthalten.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right6[
+
+&lt;br&gt;
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_trans_7.png"&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# Chunks
+
+.pull-left3[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;&lt;high&gt;Zahlen und Wörter&lt;/high&gt; im Text können durch inline Code parametrisiert werden.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;inline Code kann wie ein &lt;high&gt;Code &lt;mono&gt;chunks&lt;/mono&gt;&lt;/high&gt; beliebigen R Code enthalten.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right6[
+
+&lt;br&gt;
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_trans_8_0.png"&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# Chunks
+
+.pull-left3[
+
+&lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:60px" width=100%&gt;
+  &lt;col width="60%"&gt;
+  &lt;col width="40%"&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Markdown&lt;/b&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;echo=T/F&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Zeige/Verstecke &lt;high&gt;Code&lt;/high&gt;
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;eval=T/F&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;high&gt;Code&lt;/high&gt; ausführen/nicht-ausf.
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;include=T/F&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Inkludiere/exkludiere &lt;high&gt;allen Output&lt;/high&gt; 
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;message=T/F&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Inkludiere/exkludiere &lt;highm&gt;messages&lt;/highm&gt; im Output
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;warning=T/F&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Inkludiere/exkludiere &lt;highm&gt;warnings&lt;/highm&gt; im Output
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p align="center" style="font-size:12px;padding-top:10px"&gt;&lt;mono&gt;T/F = TRUE/FALSE&lt;/mono&gt;&lt;/p&gt;
+
+]
+
+.pull-right6[
+
+&lt;br&gt;
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_trans_8.png"&gt;
+&lt;/p&gt;
+
+]
+
+
+
+---
+
+# Chunks
+
+.pull-left3[
+
+&lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:60px" width=100%&gt;
+  &lt;col width="60%"&gt;
+  &lt;col width="40%"&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Markdown&lt;/b&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;echo=T/F&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Zeige/Verstecke &lt;high&gt;Code&lt;/high&gt;
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;eval=T/F&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;high&gt;Code&lt;/high&gt; ausführen/nicht-ausf.
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;include=T/F&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Inkludiere/exkludiere &lt;high&gt;allen Output&lt;/high&gt; 
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;message=T/F&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Inkludiere/exkludiere &lt;highm&gt;messages&lt;/highm&gt; im Output
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;warning=T/F&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Inkludiere/exkludiere &lt;highm&gt;warnings&lt;/highm&gt; im Output
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p align="center" style="font-size:12px;padding-top:10px"&gt;&lt;mono&gt;T/F = TRUE/FALSE&lt;/mono&gt;&lt;/p&gt;
+
+]
+
+.pull-right6[
+
+&lt;br&gt;
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_trans_9.png"&gt;
+&lt;/p&gt;
+
+]
+
+
+---
+
+# Chunks
+
+.pull-left3[
+
+&lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:60px" width=100%&gt;
+  &lt;col width="60%"&gt;
+  &lt;col width="40%"&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Markdown&lt;/b&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;echo=T/F&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Zeige/Verstecke &lt;high&gt;Code&lt;/high&gt;
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;eval=T/F&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;high&gt;Code&lt;/high&gt; ausführen/nicht-ausf.
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;include=T/F&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Inkludiere/exkludiere &lt;high&gt;allen Output&lt;/high&gt; 
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;message=T/F&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Inkludiere/exkludiere &lt;highm&gt;messages&lt;/highm&gt; im Output
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td bgcolor="white"&gt;
+  &lt;mono&gt;warning=T/F&lt;/mono&gt;
+  &lt;/td&gt;
+  &lt;td bgcolor="white"&gt;
+  Inkludiere/exkludiere &lt;highm&gt;warnings&lt;/highm&gt; im Output
+  &lt;/td&gt; 
+&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p align="center" style="font-size:12px;padding-top:10px"&gt;&lt;mono&gt;T/F = TRUE/FALSE&lt;/mono&gt;&lt;/p&gt;
+
+]
+
+.pull-right6[
+
+&lt;br&gt;
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_trans_10.png"&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# Setup-Chunk
+
+.pull-left3[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Im Setup-Chunk können &lt;high&gt;Settings für alle Chunks&lt;/high&gt; definiert werden vorgenommen werden.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Weiterführende Funktionen verfügbar.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right6[
+
+&lt;br&gt;
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_trans_11.png"&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# Setup-Chunk
+
+.pull-left3[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Im Setup-Chunk können &lt;high&gt;Settings für alle Chunks&lt;/high&gt; vorgenommen werden.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Weiterführende Funktionen verfügbar.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right6[
+
+&lt;br&gt;
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_trans_12.png"&gt;
+&lt;/p&gt;
+
+]
+
+
+---
+
+# Setup-Chunk
+
+.pull-left3[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Im Setup-Chunk können &lt;high&gt;Settings für alle Chunks&lt;/high&gt; vorgenommen werden.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Weiterführende Funktionen verfügbar.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right6[
+
+
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_trans_13.png"&gt;
+&lt;/p&gt;
+
+]
+
+
+---
+
+# Setup-Chunk
+
+.pull-left3[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Im Setup-Chunk können &lt;high&gt;Settings für alle Chunks&lt;/high&gt; vorgenommen werden.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Weiterführende Funktionen verfügbar.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right6[
+
+
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_trans_14.png"&gt;
+&lt;/p&gt;
+
+]
+
+
+---
+
+# Setup-Chunk
+
+.pull-left3[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Im Setup-Chunk können &lt;high&gt;Settings für alle Chunks&lt;/high&gt; vorgenommen werden.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Weiterführende Funktionen verfügbar.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right6[
+
+&lt;p align = "center"&gt;
+  &lt;img src="image/markdown_trans_15.png" height=420px&gt;
+&lt;/p&gt;
+
+]
+
+
+---
+
+# Relativer Pfad
+
+.pull-left35[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Markdown Dokumente greifen nicht auf das übliche &lt;high&gt;working directory&lt;/high&gt; zu.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Pfade in RMarkdown müssen &lt;high&gt;relativ zur Position des .Rmd&lt;/high&gt; Datei definiert werden.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;br&gt;
+```R
+# Lese Daten
+read_csv("../1_Data/daten.csv")
+
+# Lese CSS (mehr dazu später)
+css: "../2_Assets/styling.csv")
+```
+
+]
+
+.pull-right55[
+&lt;br&gt;
+&lt;p align = "center"&gt;
+  &lt;img src="image/folder.png" height=280px&gt;
+&lt;/p&gt;
+
+]
+
+
+---
+
+class: middle, center
+
+&lt;h1&gt;&lt;a href=https://dwulff.github.io/NLP_2020Autumn/menu/materials.html&gt;Materials&lt;/a&gt;&lt;/h1&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

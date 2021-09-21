@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Tokenization</title>
+    <meta charset="utf-8" />
+    <meta name="author" content=" Natural language processing" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="baselrbootcamp.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Tokenization
+### <a href='https://dwulff.github.io/NLP_2020Autumn'> Natural language processing </a> <br> <a href='https://dwulff.github.io/NLP_2020Autumn/menu/materials.html'> <i class='fas fa-clock' style='font-size:.9em;'></i> </a>  <a href='https://dwulff.github.io/NLP_2020Autumn'> <i class='fas fa-home' style='font-size:.9em;' ></i> </a>  <a href='mailto:dirk.wulff@unibas.ch'> <i class='fas fa-envelope' style='font-size: .9em;'></i>
+### September 2020
+
+---
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;
+  &lt;span style="text-align:center"&gt;
+    &lt;span&gt; 
+      &lt;img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/&gt;
+    &lt;/span&gt;
+    &lt;a href="https://cdsbasel.github.io/dataanalytics/"&gt;
+      &lt;span style="padding-left:82px"&gt; 
+        &lt;font color="#7E7E7E"&gt;
+          cdsbasel.github.io/dataanalytics/
+        &lt;/font&gt;
+      &lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a href="https://cdsbasel.github.io/dataanalytics/"&gt;
+      &lt;font color="#7E7E7E"&gt;
+       Data Analytics for Psychology and Business | April 2019
+      &lt;/font&gt;
+    &lt;/a&gt;
+    &lt;/span&gt;
+  &lt;/div&gt; 
+
+---
+
+# Encoding 
+
+.pull-left55[
+&lt;font size="5"&gt;1960: ASCII&lt;/font&gt;
+&lt;img src="https://www.asciitable.com/index/asciifull.gif"&gt;
+More info: [here](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/) &amp; [here](http://kunststube.net/encoding/)
+
+]
+
+.pull-right4[
+&lt;font size="5"&gt;1991: Unicode&lt;/font&gt;
+&lt;a href="http://unicode.org/"&gt;&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Unicode_logo.svg/512px-Unicode_logo.svg.png" width = 365&gt;&lt;/a&gt;
+
+]
+
+---
+&lt;br&gt;&lt;br&gt;
+
+| Character| Code Point | Encoding | Precision | Representation|
+|:------|:--------|:--------||:--------|
+|     `A`| `U+0041` | ASCII | fixed 7 bit | 1000001 |
+|     `A`| `U+0041` | UTF-8 | min 8 bit / 1 byte | 01000001 |
+|     `A`| `U+0041` | UTF-16 | min 16 bit / 2 byte | 00000000 01000001 |
+|     `A`| `U+0041` | UTF-32 | min 32 bit / 4 byte | 00000000 00000000 00000000 01000001 |
+|     `あ`| `U+3042` | ASCII | fixed 7 bit | - |
+|     `あ`| `U+3042` | UTF-8 | min 8 bit / 1 byte | 11100011 10000001 10000010 |
+|     `あ`| `U+3042` | UTF-16 | min 16 bit / 2 byte | 00110000 01000010 |
+|     `あ`| `U+3042` | UTF-32 | min 32 bit / 4 byte | 00000000 00000000 00110000 01000010 |
+| &lt;img src="https://images.emojiterra.com/google/android-oreo/512px/1f600.png" height="20px"&gt; | `U+1F600` | ASCII | fixed 7 bit | - |
+| &lt;img src="https://images.emojiterra.com/google/android-oreo/512px/1f600.png" height="20px"&gt; | `U+1F600` | UTF-8 | min 8 bit / 1 byte | 1111 0000 1001 1111 1001 1000 1000 0000 |
+| &lt;img src="https://images.emojiterra.com/google/android-oreo/512px/1f600.png" height="20px"&gt; | `U+1F600` | UTF-16 | min 16 bit / 2 byte | 1101 1000 0011 1101 1101 1110 0000 0000 |
+| &lt;img src="https://images.emojiterra.com/google/android-oreo/512px/1f600.png" height="20px"&gt; | `U+1F600` | UTF-32 | min 32 bit / 4 byte | - |
+
+
+---
+
+# Regular expressions 
+
+.pull-left45[
+
+According to [Wikipedia](https://en.wikipedia.org/wiki/Regular_expression):
+&gt;A regular expression, &lt;high&gt;regex or regexp&lt;/high&gt; (sometimes called a rational expression) is, in theoretical computer science and formal language theory, &lt;high&gt;a sequence of characters that define a search pattern&lt;/high&gt;. Usually this pattern is then used by &lt;high&gt;string searching algorithms&lt;/high&gt; for "find" or "find and replace" operations on strings.
+
+]
+
+.pull-right45[
+
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/2/23/The_river_effect_in_justified_text.jpg"&gt;
+
+&lt;p align="center"&gt;`(?&lt;=\.) {2,}(?=[A-Z])`&lt;p&gt;
+
+]
+
+---
+
+# Regular expressions
+
+.pull-left65[
+
+The `stringr` package provides a series of high performance regular expression functions based on the &lt;a href="http://site.icu-project.org/home"&gt;`ICU`&lt;/a&gt; C++ library. 
+
+
+```r
+str_*(string, pattern, ...)
+```
+
+| Function prefix | Use |
+|:---------------|:------------------------------|
+|   `str_detect*`  | Test if pattern is present. |
+|   `str_count*`   | Count number of pattern matches. |
+|   `str_locate*`  | Find location of pattern. |
+|   `str_extract*` | Extract strings matching pattern. |
+|   `str_replace*` | Replace string matching pattern by other string. |
+|   `str_split*`   | Split string around pattern. |
+
+]
+
+.pull-right25[
+
+&lt;img src="https://www.rstudio.com/wp-content/uploads/2014/04/stringr.png" height=200&gt;
+
+&lt;a href="http://site.icu-project.org/home"&gt;&lt;img src="http://www.unicode.org/announcements/ICU-logo.png" height=200&gt;&lt;/a&gt;
+
+
+]
+
+---
+
+# Using regular expressions
+
+
+
+
+```r
+# text
+txt &lt;- "Happy families are all alike; every unhappy family is unhappy in its own way."
+
+# Select all a
+str_extract_all(txt, "a")
+```
+
+```
+## [[1]]
+## [1] "a" "a" "a" "a" "a" "a" "a" "a" "a"
+```
+
+```r
+# Select all words starting with a
+str_extract_all(txt, "a[:alpha:]+")
+```
+
+```
+## [[1]]
+## [1] "appy"    "amilies" "are"     "all"     "alike"   "appy"    "amily"  
+## [8] "appy"    "ay"
+```
+
+---
+
+# Using regular expressions
+
+
+
+
+```r
+# text
+txt &lt;- "Happy families are all alike; every unhappy family is unhappy in its own way."
+
+# Select all a
+str_extract_all(txt, "a")
+```
+
+```
+## [[1]]
+## [1] "a" "a" "a" "a" "a" "a" "a" "a" "a"
+```
+
+```r
+# Select all words starting with a and ending with e
+str_extract_all(txt, "a[:alpha:]+e")
+```
+
+```
+## [[1]]
+## [1] "amilie" "are"    "alike"
+```
+
+
+---
+
+# Tokenization
+
+
+
+
+```r
+# text
+txt &lt;- "Happy families are all alike; every unhappy family is unhappy in its own way."
+
+# Split by space
+str_split(txt, " ")
+```
+
+```
+## [[1]]
+##  [1] "Happy"    "families" "are"      "all"      "alike;"   "every"   
+##  [7] "unhappy"  "family"   "is"       "unhappy"  "in"       "its"     
+## [13] "own"      "way."
+```
+
+```r
+# Split by space
+str_split(txt, "[:blank:]")
+```
+
+```
+## [[1]]
+##  [1] "Happy"    "families" "are"      "all"      "alike;"   "every"   
+##  [7] "unhappy"  "family"   "is"       "unhappy"  "in"       "its"     
+## [13] "own"      "way."
+```
+
+---
+
+# Tokenization
+
+
+
+
+```r
+# text
+txt &lt;- "Happy families are all alike; every unhappy family is unhappy in its own way."
+
+# Tokenize
+str_extract_all(txt, "[:alpha:]+")
+```
+
+```
+## [[1]]
+##  [1] "Happy"    "families" "are"      "all"      "alike"    "every"   
+##  [7] "unhappy"  "family"   "is"       "unhappy"  "in"       "its"     
+## [13] "own"      "way"
+```
+
+```r
+# Tokenize
+str_extract_all(txt, "[A-Za-z]+")
+```
+
+```
+## [[1]]
+##  [1] "Happy"    "families" "are"      "all"      "alike"    "every"   
+##  [7] "unhappy"  "family"   "is"       "unhappy"  "in"       "its"     
+## [13] "own"      "way"
+```
+
+---
+
+# Sentence segmentation
+
+
+
+
+```r
+# text
+txt &lt;- "Happy families are all alike; every unhappy family is unhappy in its own way."
+
+# Sentenize
+str_extract_all(txt, '[^[:space:]][^[.!?;]]*[.!?;]')
+```
+
+```
+## [[1]]
+## [1] "Happy families are all alike;"                  
+## [2] "every unhappy family is unhappy in its own way."
+```
+
+---
+
+class: middle, center
+
+&lt;h1&gt;&lt;a href=https://dwulff.github.io/NLP_2020Autumn/menu/materials.html&gt;Materials&lt;/a&gt;&lt;/h1&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

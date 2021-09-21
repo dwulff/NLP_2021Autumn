@@ -1,0 +1,238 @@
+---
+title: "Tokenization"
+author: "<a href='https://dwulff.github.io/NLP_2020Autumn'>
+    Natural language processing
+  </a>
+  <br>
+  <a href='https://dwulff.github.io/NLP_2020Autumn/menu/materials.html'>
+    <i class='fas fa-clock' style='font-size:.9em;'></i>
+  </a>&#8239; 
+  <a href='https://dwulff.github.io/NLP_2020Autumn'>
+    <i class='fas fa-home' style='font-size:.9em;' ></i>
+  </a>&#8239;
+  <a href='mailto:dirk.wulff@unibas.ch'>
+    <i class='fas fa-envelope' style='font-size: .9em;'></i>"
+date: "September 2020"
+output:
+  xaringan::moon_reader:
+    css: ["default", "baselrbootcamp.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+---
+
+layout: true
+
+<div class="my-footer">
+  <span style="text-align:center">
+    <span> 
+      <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/>
+    </span>
+    <a href="https://cdsbasel.github.io/dataanalytics/">
+      <span style="padding-left:82px"> 
+        <font color="#7E7E7E">
+          cdsbasel.github.io/dataanalytics/
+        </font>
+      </span>
+    </a>
+    <a href="https://cdsbasel.github.io/dataanalytics/">
+      <font color="#7E7E7E">
+       Data Analytics for Psychology and Business | April 2019
+      </font>
+    </a>
+    </span>
+  </div> 
+
+---
+
+# Encoding 
+
+.pull-left55[
+<font size="5">1960: ASCII</font>
+<img src="https://www.asciitable.com/index/asciifull.gif">
+More info: [here](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/) & [here](http://kunststube.net/encoding/)
+
+]
+
+.pull-right4[
+<font size="5">1991: Unicode</font>
+<a href="http://unicode.org/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Unicode_logo.svg/512px-Unicode_logo.svg.png" width = 365></a>
+
+]
+
+---
+<br><br>
+
+| Character| Code Point | Encoding | Precision | Representation|
+|:------|:--------|:--------||:--------|
+|     `A`| `U+0041` | ASCII | fixed 7 bit | 1000001 |
+|     `A`| `U+0041` | UTF-8 | min 8 bit / 1 byte | 01000001 |
+|     `A`| `U+0041` | UTF-16 | min 16 bit / 2 byte | 00000000 01000001 |
+|     `A`| `U+0041` | UTF-32 | min 32 bit / 4 byte | 00000000 00000000 00000000 01000001 |
+|     `あ`| `U+3042` | ASCII | fixed 7 bit | - |
+|     `あ`| `U+3042` | UTF-8 | min 8 bit / 1 byte | 11100011 10000001 10000010 |
+|     `あ`| `U+3042` | UTF-16 | min 16 bit / 2 byte | 00110000 01000010 |
+|     `あ`| `U+3042` | UTF-32 | min 32 bit / 4 byte | 00000000 00000000 00110000 01000010 |
+| <img src="https://images.emojiterra.com/google/android-oreo/512px/1f600.png" height="20px"> | `U+1F600` | ASCII | fixed 7 bit | - |
+| <img src="https://images.emojiterra.com/google/android-oreo/512px/1f600.png" height="20px"> | `U+1F600` | UTF-8 | min 8 bit / 1 byte | 1111 0000 1001 1111 1001 1000 1000 0000 |
+| <img src="https://images.emojiterra.com/google/android-oreo/512px/1f600.png" height="20px"> | `U+1F600` | UTF-16 | min 16 bit / 2 byte | 1101 1000 0011 1101 1101 1110 0000 0000 |
+| <img src="https://images.emojiterra.com/google/android-oreo/512px/1f600.png" height="20px"> | `U+1F600` | UTF-32 | min 32 bit / 4 byte | - |
+
+
+---
+
+# Regular expressions 
+
+.pull-left45[
+
+According to [Wikipedia](https://en.wikipedia.org/wiki/Regular_expression):
+>A regular expression, <high>regex or regexp</high> (sometimes called a rational expression) is, in theoretical computer science and formal language theory, <high>a sequence of characters that define a search pattern</high>. Usually this pattern is then used by <high>string searching algorithms</high> for "find" or "find and replace" operations on strings.
+
+]
+
+.pull-right45[
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/23/The_river_effect_in_justified_text.jpg">
+
+<p align="center">`(?<=\.) {2,}(?=[A-Z])`<p>
+
+]
+
+---
+
+# Regular expressions
+
+.pull-left65[
+
+The `stringr` package provides a series of high performance regular expression functions based on the <a href="http://site.icu-project.org/home">`ICU`</a> C++ library. 
+
+```{r, eval = F}
+str_*(string, pattern, ...)
+```
+
+| Function prefix | Use |
+|:---------------|:------------------------------|
+|   `str_detect*`  | Test if pattern is present. |
+|   `str_count*`   | Count number of pattern matches. |
+|   `str_locate*`  | Find location of pattern. |
+|   `str_extract*` | Extract strings matching pattern. |
+|   `str_replace*` | Replace string matching pattern by other string. |
+|   `str_split*`   | Split string around pattern. |
+
+]
+
+.pull-right25[
+
+<img src="https://www.rstudio.com/wp-content/uploads/2014/04/stringr.png" height=200>
+
+<a href="http://site.icu-project.org/home"><img src="http://www.unicode.org/announcements/ICU-logo.png" height=200></a>
+
+
+]
+
+---
+
+# Using regular expressions
+
+```{r, eval = T, echo = F, warning = F, message=F}
+require(stringr)
+```
+
+```{r, eval = T}
+# text
+txt <- "Happy families are all alike; every unhappy family is unhappy in its own way."
+
+# Select all a
+str_extract_all(txt, "a")
+
+# Select all words starting with a
+str_extract_all(txt, "a[:alpha:]+")
+
+```
+
+---
+
+# Using regular expressions
+
+```{r, eval = T, echo = F, warning = F, message=F}
+require(stringr)
+```
+
+```{r, eval = T}
+# text
+txt <- "Happy families are all alike; every unhappy family is unhappy in its own way."
+
+# Select all a
+str_extract_all(txt, "a")
+
+# Select all words starting with a and ending with e
+str_extract_all(txt, "a[:alpha:]+e")
+
+```
+
+
+---
+
+# Tokenization
+
+```{r, eval = T, echo = F, warning = F, message=F}
+require(stringr)
+```
+
+```{r, eval = T}
+# text
+txt <- "Happy families are all alike; every unhappy family is unhappy in its own way."
+
+# Split by space
+str_split(txt, " ")
+
+# Split by space
+str_split(txt, "[:blank:]")
+
+```
+
+---
+
+# Tokenization
+
+```{r, eval = T, echo = F, warning = F, message=F}
+require(stringr)
+```
+
+```{r, eval = T}
+# text
+txt <- "Happy families are all alike; every unhappy family is unhappy in its own way."
+
+# Tokenize
+str_extract_all(txt, "[:alpha:]+")
+
+# Tokenize
+str_extract_all(txt, "[A-Za-z]+")
+
+```
+
+---
+
+# Sentence segmentation
+
+```{r, eval = T, echo = F, warning = F, message=F}
+require(stringr)
+```
+
+```{r, eval = T}
+# text
+txt <- "Happy families are all alike; every unhappy family is unhappy in its own way."
+
+# Sentenize
+str_extract_all(txt, '[^[:space:]][^[.!?;]]*[.!?;]')
+
+```
+
+---
+
+class: middle, center
+
+<h1><a href=https://dwulff.github.io/NLP_2020Autumn/menu/materials.html>Materials</a></h1>

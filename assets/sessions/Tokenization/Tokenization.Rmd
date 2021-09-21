@@ -1,0 +1,127 @@
+---
+title: "Tokenization"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE, 
+  eval = TRUE,
+  message = FALSE,
+  warning = FALSE)
+```
+
+<img src="https://dwulff.github.io/NLP_2020Autumn/assets/img/text_sm.png" width="100%"></img>
+
+# {.tabset}
+
+## Overview
+
+In this assignment you will...
+
+- download an R project.
+- download a book from the Gutenbrg project & read it into R.
+- start a markdown document.
+- read-in and tokenize the text.
+
+## Tasks
+
+### A - Download Project
+
+1. Download this zipped <a href="https://dwulff.github.io/NLP_2020Autumn/assets/sessions/NLP_2020Autumn.zip"><b>project</b></a>.
+
+2. Locate the downloaded file, unzip it and move it to a suitable location on your hard drive. 
+
+### B - Get book
+
+1. The first task of this assignment consists of choosing a book of your liking and loading it into R. Visit the website of [**Project Gutenberg**](http://www.gutenberg.org/) and select a book that you like. Tipp: check out Project Gutenberg's [Top 100](http://www.gutenberg.org/browse/scores/top) list. 
+
+2. To download the book enter the book's site and select `Textdatei UTF-8` (or 
+`Plain Text UTF-8`). Depending on your browser (and your browser settings) this will either download the file directly or open up the text in the browser tab. In the latter case, use right-click on the text and select `save as` (or comparable) to download the text as a text-file to your hard-drive. 
+
+3. Locate the downloaded text file and move it into your `data` folder inside your project folder. 
+
+### C - Get started
+
+1. Open R Studio by double-clicking `NLP_2020Autumn.Rproj` within your project folder. 
+
+2. Open a new R markdown file with `html` output and save it as `Tokenization.Rmd` in your project folder.
+
+3. Create a new chunk and load the packages `readr`, `stringr`, and `wordcloud` using `library()`.
+
+4. Use the `read_file()` function to read-in the text file and assign the result to an object called `text`. The path to the file should be `data/NAME_OF_FILE.txt`
+
+5. The `text` object should be a `vector` of type `character` that has `length` one. Confirm this using `typeof()` and `length()`. 
+
+6. Determine the the number of characters using `nchar()`.
+
+7. Inspect the first 1,000 characters using the `str_sub()` function. The `str_sub()` function takes three arguments: the text, the starting character index (`1`), and the ending character index (`1000`).  
+
+```{r}
+library(readr)
+library(stringr)
+library(wordcloud)
+
+# load text
+text <- read_file('pg2197.txt')
+
+# evaluate object
+typeof(text)
+length(text)
+nchar(text)
+str_sub(text, 1, 1000)
+```
+
+### D - Tokenize text
+
+1. Before you can tokenize the text, you must remove several text sections added by the Project Gutenberg containing information on the text and the license of use. The sections are separated by header lines with leading and trailing star symbols, e.g., `*** START OF THIS PROJECT GUTENBERG EBOOK THE GAMBLER ***`. Build a regular expression that identifies such lines using the following elements: escaped star symbol `\\*`, curly brackets `{}` to indicate the number of symbol repetitions, the print class `[:print:]` for every letter in-between star symbols, and the plus `+` to indicate the number of print repetitions. 
+
+2. Then use your regular expression within the `str_split()`-function to split the text. This will return a list of length one, with the only element being a character vector containing the individual sections. Store the list's only element (select with `[[1]]`) in an object called `text_split`. 
+
+3. Use `class()` to confirm that that `text_split` is a vector.   
+
+4. Now identify the element in the vector that has the most characters, which will be the book's actual text. To do this use `nchar()`.  
+
+5. Select the largest element and store it as `main_text`. 
+
+```{r}
+# cut text into sections
+text_split = str_split(text, '\\*{3}[:print:]*\\*{3}')
+
+# count characters per section
+nchar(text_split[[1]])
+
+# extract main text
+main_text = text_split[[1]][2]
+```
+
+6. As a final step before tokenzing the text, transform the `main_text`-object to lower-case only using `str_to_lower()`. 
+
+7. Now, use `str_extract_all()` and `[:alpha:]+` to tokenize `main_text`. This should  extract all individual words from the text and return them as a vector contained in a list. Store the vector (i.e., the list first element) as an object called `tokens`.  
+
+8. Count the number of words in `tokens` using length. This is the number of words in your book. 
+
+```{r}
+# to lower
+main_text = str_to_lower(main_text)
+
+# tokenize
+tokens = str_extract_all(main_text, '[:alpha:]+')[[1]]
+
+# count words
+length(tokens)
+```
+
+### E - Wordcloud
+
+1. Use the function `wordcloud` to create a wordcloud of your tokens. It may take a while. If it takes too long, use only a subset of the words, e.g., the first 10,000 words (`tokens[1:10000]`). 
+
+
+```{r}
+# to lower
+wordcloud(tokens)
+```
+
+
+

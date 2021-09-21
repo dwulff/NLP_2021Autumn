@@ -1,0 +1,162 @@
+---
+title: "Zipf"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE, 
+  eval = TRUE,
+  message = FALSE,
+  warning = FALSE)
+```
+
+<img src="https://dwulff.github.io/NLP_2020Autumn/assets/img/text_sm.png" width="100%"></img>
+
+# {.tabset}
+
+## Overview
+
+In this assignment you will...
+
+- Analyze word frequency.
+- Learn about the concept of stop words.
+
+## Tasks
+
+### A - Return to previous assignment
+
+1. Start a new markdown document and start out with working code from the previous assignment in order to tokenize the text.
+
+2. At the beginning also load the package `stopwords`. 
+
+```{r}
+library(readr)
+library(stringr)
+library(wordcloud)
+library(stopwords)
+
+# load text
+text <- read_file('pg2197.txt')
+
+# cut text into sections
+text_split = str_split(text, '\\*{3}[:print:]*\\*{3}')
+
+# count characters per section
+nchar(text_split[[1]])
+
+# extract main text
+main_text = text_split[[1]][2]
+
+# to lower
+main_text = str_to_lower(main_text)
+
+# tokenize
+tokens = str_extract_all(main_text, '[:alpha:]+')[[1]]
+```
+
+### B - Analyze frequencies
+
+1. Begin analyzing the frequency distribution of tokens by counting the occurrences of each token using `table()`. The `table()`-function will return a table object that you can treat, for the most part, like a named integer vector. Store the resulting object as `token_frequencies`.
+
+```{r}
+# count tokens
+token_frequencies = table(tokens)
+```
+
+2. Use `length()` to determine the length of `token_frequencies`. What does this number tell you?
+
+```{r}
+# count tokens
+length(token_frequencies)
+```
+
+3. `token_frequencies` has one element for every unique token. It's length therefore indicates the number of distinct tokens in the book. Print a few entries, e.g., `token_frequencies[1:100]`, to get a feel what those elements look like. 
+
+```{r}
+# print first tokens
+token_frequencies[1:100]
+```
+
+4. Use `sort()` with `decreasing = TRUE` to arrange the elements of `token_frequencies` in descending order. Store the sorted table again as `token_frequencies` (i.e., overwrite the object).
+
+```{r}
+# sort token table
+token_frequencies = sort(token_frequencies, decreasing = TRUE)
+```
+
+5. Print again `token_frequencies[1:100]`, which now should show the 100 most frequent words. What are the most frequent words in your book? With the exception of stopwords (see below), which are per default eliminated by `wordcloud()`, the same ones should have popped up in the word cloud from the previous assignment. 
+
+### C - Zipf's law
+
+1. Analyze token frequency as a function of the token's rank and label the axes as `"Token rank"` and `"Token frequency"`. To do this, create two vectors, one called `token_rank` containing the token ranks (use `rank()`), where the smallest rank is assigned to the token with the highest frequency, and one called `token_freq` containing the token frequencies as a vector (use `c()`). 
+
+```{r}
+# Create vectors
+token_rank = rank(-token_frequencies)
+token_freq = c(token_frequencies)
+```
+
+2. Now plot `token_freq` against `token_rank` as a line and label the axes as `"Token rank"` and `"Token frequency"`. Use the standard `plot()` function with `type = "l"`. 
+
+```{r}
+# Plot Zipf
+plot(token_rank, token_freq, 
+     type = "l", xlab = "Token rank", ylab = "Token frequency")
+```
+
+3. Now use `lines()` to add a second line determined by $max(f)/{(r + \beta)}^\alpha$ with $\alpha = 1$, $\beta = 2.7$, $f$ being the token frequency, and $r$ being the token rank. Choose a different color for this line. 
+
+```{r}
+# Add model
+plot(token_rank, token_freq, 
+     type = "l", xlab = "Token rank", ylab = "Token frequency")
+lines(token_rank, max(token_freq) * (1 / token_rank * 2.7), col = "salmon")
+```
+
+4. The two lines should have overlapped relatively well. This should be even easier to see using a log-scaled visualization. Try it out. Simply add `log = "xy"` as an  the plot function. 
+
+```{r}
+# Add model
+plot(token_rank, token_freq, 
+     type = "l", xlab = "Token rank", ylab = "Token frequency", log="xy")
+lines(token_rank, max(token_freq) * (1 / token_rank * 2.7), col = "salmon")
+```
+
+### D - Zipf's part II 
+
+1. Another law related to the one just studied and also associated with Zipf is the relationship betweenw word length and frequency. Using `names()` and `nchar()`, create a new vector from `token_frequencies` containing the number of characters of each of the tokens. Call this vector `token_nchar`. 
+
+```{r}
+# Create vector of characters
+token_nchar = nchar(names(token_frequencies))
+```
+
+2. Using `plot()`, plot `token_freq` against `token_nchar` as points (i.e., don't use `type = "l"`).
+
+```{r}
+# Plot Zipf pt. II
+plot(token_nchar, token_freq, 
+     xlab = "Token n character", ylab = "Token frequency")
+```
+
+3. Is there a relationship between the number of characters in a token and it's frequency? What does this reveal about language?
+
+### D - Stopwords
+
+1. Extremely frequent words are usually less interesting because they occur in so many different context that they cannot carry a lot of meaning. For many analyses focusing on meaning or content, it is common to eleminate such overly frequent words devoid of specific meaning, which are known as stopwods. Use `stopwords()` to create a vector called `stopwords`.
+
+2. Take a look at `stopwords` by printing it. Which kind of words are included in the vector?
+
+3. Determine the average rank of the words in `stopwords` based on `token_frequencies`. This code snippet should be useful `names(token_frequencies) %in% stopwords`. Does this confirm the high frequency of stop words?
+
+```{r}
+# stopwords
+stopwords = stopwords()
+
+# average rank
+token_rank[names(token_frequencies) %in% stopwords] %>% 
+  mean(na.rm = T)
+
+```

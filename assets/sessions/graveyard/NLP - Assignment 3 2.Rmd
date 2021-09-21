@@ -1,0 +1,350 @@
+---
+title: "NLP - Assignment 3"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      eval = TRUE,
+                      message = F,
+                      warning = F)
+
+require(tidyverse)
+require(tidytext)
+```
+
+In this assignment you will...
+
+- create a term-document matrix.
+- determine co-occurrence vectors using ppmi.
+- calculate cosine similarities and page ranks.
+- analyze fluency data.
+
+## Preparations
+
+1) Complete all of the steps of the previous assignment, to obtain a tibble that loos like this. 
+
+```{r, eval = TRUE}
+
+# load text
+text <- read_file('grimm.txt')
+
+# define regex
+regex <- '\\*{3}[:print:]*\\*{3}'
+
+# cut text into sections
+text_split = str_split(text, '\\*{3}[:print:]*\\*{3}')
+
+# get sections
+sections <- text_split[[1]]
+
+# select main text
+main_text <- sections[2]
+
+# create tibble
+text_tbl <- tibble(text = main_text)
+
+# define regex
+token_tbl <- text_tbl %>%
+  unnest_tokens(sentence, text, token = "sentences") %>%
+  mutate(sentence_ind = as.character(1:n())) %>%
+  unnest_tokens(word, "sentence")
+
+token_tbl
+```
+
+2) Then remove stopwords using the code below. 
+
+```{r, echo = TRUE}
+
+# remove stopwords
+token_tbl <- token_tbl %>%
+  anti_join(get_stopwords('en'))
+
+```
+
+
+## Term-Document Matrix
+
+2) There are many powerful packages to determine Term-Document Matrices, such as the `tm` package. The same job can, however, also use be achieved using the basic R function `table()`. When the `table()` function is applied to a tibble consisting of more than one variable, then the function computes a full cross-table off all the entries in each variable. That is, for a tibble with a variable containing a sentence indicator and a variable containing words, it will tabulate words against sentences, which is exactly what we want. Apply `table()` to your tokenized tibble and call the object `tdm`. Make sure that the first variable contains the words.
+
+```{r}
+
+# create term document matrix
+tdm <- token_tbl %>%
+  select(word, sentence_ind) %>%
+  table()
+  
+```
+
+3) Explore the object's dimensions using `dim()`. How many rows and columns are there? 
+
+```{r}
+
+dim(tdm)
+```
+
+4) Use `mean(tdm == 0)` to count the proportion of zeros in the matrix. What proportion of cells are zero?
+
+```{r}
+
+mean(tdm == 0)
+```
+
+
+## Positive PMI transformation
+
+1) To calculate the positive PMI, first create a new matrix that contains the joint probability of words and sentences by diving `tdm` by `sum(tdm)`. Call the new matrix `p_tdm`. 
+
+```{r}
+
+p_tdm <- tdm / sum(tdm)
+```
+
+2) Next determine marginal probability distributions of words and sentences by calculating `rowSums()` and `colSums()` (applied to `p_tdm`). Save the results as `p_words` and `p_sentences`.
+
+```{r}
+
+p_words <- rowSums(p_tdm)
+p_sentences <- colSums(p_tdm)
+```
+
+3) Now you have all you need to calculate the point-wise mutual information (pmi). That is you now the joint distribution $p(sentence, word)$ and the marginal distributions of words $p(word)$ and sentences $p(sentence)$. Compare to the formula in Bullinaria and Levy (2017, p. 514). The only thing missing is to divide each cell of `p_tdm` by the according values of `p_words` and `p_sentences`. One way to achieve this is by the outer product of $p(word)$ and $p(sentence)$. Run the code below. 
+
+```{r, echo = TRUE}
+
+outer_mat <- outer(p_words, p_sentences)
+```
+
+4) Explore `outer_mat`. How many rows and columns does it have? How do the first few values, e.g., `outer_mat[1:10, 1:10]` correspond to `p_words[1:10]` and `p_sentences[1:10]`? Check out the [**outer product**](https://en.wikipedia.org/wiki/Outer_product) on Wikipedia.
+
+```{r}
+dim(outer_mat)
+
+outer_mat[1:10, 1:10]
+p_words[1:10]
+p_sentences[1:10]
+```
+
+5) Using `outer_mat`, you can now conveniently compute $\frac{p(sentence, word)}{p(word)*p(sentence)}$ by dividing `p_tdm` by `outer_mat`. Do so. Name the result `pmp`, for point-wise mutual probability. 
+
+```{r}
+pmp <- p_tdm / outer_mat
+```
+
+6) Calculate the `pmi` from `pmp` by taking the logarithm to the base 2 (`log2()`) of `pmp`. 
+
+```{r}
+pmi <- log2(pmp)
+```
+
+7) Finally, change all negative values in `pmi` to `0` using the code below. 
+
+```{r, echo = TRUE}
+ppmi <- pmi
+ppmi[ppmi < 0] <- 0
+```
+
+## Cosine similarity
+
+Next, we want to construct a matrix containing the cosine similarities between the word vectors of each pair of words. To do this, we can again make use of some matrix algebra. The general form of the cosine similarity is $cos = \frac{A \cdot B}{\lVert A \rVert \lVert B \rVert}$, where $\lVert A \rVert = \sqrt{\sum_i{A_i^2}} = \sqrt{A \cdot A}$. This means that we need to determine (1) the [**dot products**](https://en.wikipedia.org/wiki/Dot_product) of all pairs of word vectors and (2)  the square of the dot-product of each word vector with itself. Turns out we can do both in one step.   
+
+1) Compute the [**matrix product**](https://en.wikipedia.org/wiki/Matrix_multiplication) of `ppmi` and its transpose `t(ppmi)`. To compute the matrix product use `%*%` rather than `*`. Name the resulting object `dotprod`. Be aware that the calculation may take a moment.
+
+```{r}
+dotprod <- ppmi %*% t(ppmi)
+```
+
+2) Explore `dotprod`. How many rows and columns? Do the numbers match the number of words?
+
+```{r}
+dim(dotprod)
+```
+
+3) Next, we need to normalize (aka divide) the dot product by the square root of the dot products of the words with themselves, i.e., $\sqrt{A \cdot A}$ and $\sqrt{B \cdot B}$. Turns out, we already calculated $A \cdot A$ and $B \cdot B$. In the previous step we calculated the dot products of all possible pairs of words, such that `dotprod[1, 2]` contains the dot product of words `1` and `2`, `dotprod[3, 8]` contains the dot product of words `3` and `8`, and so on. Correspondingly, `dotprod[1, 1]` contains the dot product of word `1` with itself. Thus, the diagonal of `dotprod` contains the $A \cdot A$ and $B \cdot B$. Use `diag()` to select the diagonal of `dotprod` and store it in `dotprod_diag`.  
+
+```{r}
+dotprod_diag <- diag(dotprod)
+```
+
+4) Now calculate the outer product of the square root of `dotprod_diag`, i.e., `sqrt(dotprod_diag)` using `outer()` and store it as `dotprod_diag_outer`.   
+
+```{r}
+dotprod_diag_outer <- outer(sqrt(dotprod_diag), sqrt(dotprod_diag))
+```
+
+5) Finally, divide `dotprod` by `dotprod_diag_outer` to obtain a matrix of cosine similarities. Name the result `cosines`. 
+
+```{r}
+cosines <- dotprod/dotprod_diag_outer
+```
+
+6) Explore your cosines a bit. For instance, to examine the 20 closest associates to a word you can use `sort(cosines[word,], decreasing = T)[1:20]`. In my case, using the brothers Grimm works, the 20 closest associates to `gretel` are ...
+
+```{r, eval = T, echo = F}
+cosines = readRDS("cos.RDS")
+```
+
+```{r, eval = TRUE, echo = FALSE}
+sort(cosines['gretel',], decreasing = T)[1:20]
+```
+
+## Page rank
+
+1) Use the code below to determine the *page rank* of each of the words in your cosine matrix. First, however, make sure to install the `igraph` package using `install.packages('igraph')` (only once). 
+
+```{r, eval = TRUE, echo = TRUE}
+
+# import to igraph
+net = igraph::graph_from_adjacency_matrix(cosines, 
+                                          mode = "undirected", 
+                                          weighted = TRUE)
+
+# determine page rank
+pagerank = igraph::page_rank(net)$vector
+
+```
+
+2) Explore which words have highest page rank values using `sort(pagerank,decreasing = T)[1:50]`. The 50 highest page ranks in the works of the brothers Grimm are...
+
+```{r, eval = TRUE, echo = FALSE}
+sort(pagerank,decreasing = T)[1:50]
+```
+
+## Explore letter fluency data
+
+1) Load the letter fluency data sets with the following code. NOTE: You need to be connected to the internet to load the data.
+
+```{r, echo = TRUE, eval = TRUE}
+
+# fluency data links
+link_m <- 'https://www.dirkwulff.org/courses/2019_naturallanguage/data/letter_m.RDS'
+link_s <- 'https://www.dirkwulff.org/courses/2019_naturallanguage/data/letter_s.RDS'
+
+# read fluency data
+letter_m <- readRDS(url(link_m))
+letter_s <- readRDS(url(link_s))
+
+```
+
+2) Using the code below, determine the average rank of the page rank values for a given list in each of the fluency data vectors. Remember `rank(-pagerank)` means that small ranks have higher page ranks.
+
+```{r, echo = TRUE, eval = TRUE}
+
+# get average ranks
+pg_letter_m <- sapply(letter_m, function(x) mean(rank(-pagerank)[x], na.rm = T))
+pg_letter_s <- sapply(letter_s, function(x) mean(rank(-pagerank)[x], na.rm = T))
+
+```
+
+3) Using the code below, plot the average ranks for both letters and compare against the overall average rank. Are the average ranks smaller than the overall average rank?
+
+```{r, echo  = TRUE, eval = TRUE}
+
+# plot average rank pageranks of s and m 
+cols = c("#5FB2337F", "#6A7F937F")
+hist(pg_letter_m, xlim = c(0, length(pagerank)), 
+     breaks = 20, col = cols[1], border=NA, 
+     main = '', xlab = 'rank(-pagerank)')
+hist(pg_letter_s, add = TRUE, col = cols[2],border=NA,
+      xlim = c(0, length(pagerank)), breaks = 20)
+abline(v = mean(rank(-pagerank)), lwd=1, lty=2)
+
+```
+
+## Explore category fluency data
+
+1) Load the category fluency data sets with the following code. NOTE: You need to be connected to the internet to load the data.
+
+```{r, echo = TRUE, eval = TRUE}
+
+# fluency data links
+link_ani <- 'https://www.dirkwulff.org/courses/2019_naturallanguage/data/animals.RDS'
+link_veg <- 'https://www.dirkwulff.org/courses/2019_naturallanguage/data/veggies.RDS'
+
+# read fluency data
+animals <- readRDS(url(link_ani))
+veggies <- readRDS(url(link_veg))
+
+```
+
+2) Using the code below, determine the average cosine similarity for the words within each fluency list. 
+
+```{r, echo = TRUE, eval = TRUE}
+
+# set the cosine diagonal to 0
+cosines_noloop <- cosines
+diag(cosines_noloop) <- 0
+
+# words in cosine mat
+nam <- rownames(cosines_noloop)
+
+# extract cosines fun
+extract_cosines <- function(words){
+  words <- unique(words)
+  words <- words[words %in% nam]
+  cosines_noloop[words, words]
+  }
+
+# get average ranks
+cos_animals <- sapply(animals, function(x) mean(extract_cosines(x)))
+cos_veggies <- sapply(veggies, function(x) mean(extract_cosines(x)))
+
+```
+
+3) Using the code below, plot the average cosines for both categories and compare against the overall average cosine. Are the average cosines larger than the overall average cosine? What do you think, what do the Brothers Grimm talk more about, animals or veggies?
+
+```{r, echo  = TRUE, eval = TRUE}
+
+# plot average cosines of animals and veggies 
+cols = c("#5FB2337F", "#6A7F937F")
+hist(cos_animals, xlim = c(0, .2), 
+     breaks = 20, col = cols[1], border=NA, 
+     main = '', xlab = 'Cosine')
+hist(cos_veggies, add = TRUE, col = cols[2],border=NA,
+      xlim = c(0, .2), breaks = 20)
+abline(v = mean(cosines_noloop), lwd=1, lty=2)
+
+```
+
+
+## BONUS: Category fluency transitions
+
+Another interesting analysis of the category fluency data evaluates whether the word-to-word transitions in the fluency lists have higher cosine similarity than the average. Analyze this for both categories.  
+
+```{r}
+
+# extract cosines fun
+compute_cosine_diff <- function(words){
+
+  # transition cosine
+  transitions <- cbind(words[-length(words)],words[-1])
+  transitions <- transitions[transitions[,1] %in% nam &
+                             transitions[,2] %in% nam, ]
+  transition_cos <- mean(cosines_noloop[transitions])
+
+  # overall cosine
+  words <- unique(words)
+  words <- words[words %in% nam]
+  average_cos <- mean(cosines_noloop[words, words])
+  
+  transition_cos - average_cos
+    
+  }
+
+# get average ranks
+cos_diff_animals <- sapply(animals, compute_cosine_diff)
+cos_diff_veggies <- sapply(veggies, compute_cosine_diff)
+
+# plot results
+cols = c("#5FB2337F", "#6A7F937F")
+hist(cos_diff_animals, xlim = c(-.2, .2), 
+     breaks = 20, col = cols[1], border=NA, 
+     main = '', xlab = 'cos(Transitions) - cos(Average)')
+hist(cos_veggies, add = TRUE, col = cols[2],border=NA,
+      xlim = c(-.2, .2), breaks = 20)
+abline(v = 0, lwd=1, lty=2)
+
+```
+
+

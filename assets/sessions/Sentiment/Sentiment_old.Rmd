@@ -1,0 +1,143 @@
+---
+title: "NLP - Assignment 4"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      eval = TRUE,
+                      message = F,
+                      warning = F)
+
+require(tidyverse)
+require(tidytext)
+```
+
+In this assignment you will analyze the emotional arc of several books.
+
+## Preparations
+
+1) Select five books that you find interesting and that do not drastically differ in length. The smallest book should be more than 50% of the size of the largest book. 
+
+2) Following the steps of the the previous assignments, read in the texts, extract the main text from them, and create a tibble with five rows that looks like this. 
+
+```{r, eval = TRUE}
+
+main_text_fun <- function(file){
+  
+    # load text
+  text <- read_file(file)
+  
+  # define regex
+  regex <- '\\*{3}[:print:]*\\*{3}'
+  
+  # cut text into sections
+  text_split = str_split(text, '\\*{3}[:print:]*\\*{3}')
+  
+  # get sections
+  sections <- text_split[[1]]
+  
+  # select main text
+  main_text <- sections[2]
+  
+  }
+  
+
+# file
+files <- list.files('books', full.names = T)
+
+# process texts
+texts <- sapply(files, main_text_fun)
+
+# as tibble
+text_tbl <- as_tibble(cbind(book = c('Alice in Wonderland','Dorian Gray', 'Huckleberry Finn', 'Peter Pan', 'Treasure Island'
+), text = texts))
+
+# print
+text_tbl
+```
+
+2) Next use `unnest_tokens` to tokenize the text. 
+
+```{r, eval = TRUE}
+
+# tokenize
+token_tbl <- text_tbl %>% 
+  unnest_tokens(word, "text")
+```
+
+3) Now use `tidyverse`'s `group_by()` and `mutate()` functions to add a variable `pos` that codes the position of a word inside the respective books.   
+
+```{r, echo = TRUE, eval = FALSE}
+# add pos variable
+token_tbl <- token_tbl %>% 
+  group_by(XX) %>%
+  mutate(pos = 1:n(),
+         rel_pos = pos / max(pos)) %>%
+  ungroup()
+```
+
+```{r, eval = TRUE}
+# add pos variable
+token_tbl <- token_tbl %>% 
+  group_by(book) %>%
+  mutate(pos = 1:n(),
+         rel_pos = pos / max(pos)) %>%
+  ungroup()
+```
+
+## Sentiment analysis
+
+1) Extract the *afinn* sentiment dictionary using the `get_sentiments` function and store it in an object called `afinn`.
+
+2) Use `inner_join` to combine your `token_tbl` with `afinn`.
+
+```{r, eval = TRUE}
+# add sentiments
+token_tbl <- token_tbl %>% 
+  inner_join(get_sentiments("afinn"))
+```
+
+## Smoothing
+
+1. Use the `group_by` - `mutate` idiom along with the smooth function below to calculate more interpretable, smoothed sentiment scores for each of the books. 
+
+```{r, echo = TRUE, eval = TRUE}
+
+# smoothing function
+smooth = function(pos, score){ 
+  sm = sapply(pos, function(x) {
+    weights = dnorm(pos, x, max(pos) / 10)
+    sum(score * (weights / sum(weights)))
+    })
+  }
+
+```
+
+```{r, eval = TRUE}
+
+# smooth scores
+token_tbl <- token_tbl %>% 
+  group_by(book) %>%
+  mutate(smooth_score = smooth(pos, score))
+
+
+```
+
+2. Use the code below to create a plot like this:
+
+```{r, eval = TRUE, echo = TRUE}
+
+ggplot(token_tbl, 
+       aes(rel_pos, smooth_score,color=book)) +
+  geom_line(lwd=2) + 
+  labs(x = "Position", y = 'Sentiment')
+
+
+```
+
+## Project proposal
+
+Come up with 1 or 2 project proposals, each about half a page long. Address which question you would like to address and which data you want or would like to use for it.   
+
+

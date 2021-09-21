@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Natural language processsing</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="The R Bootcamp  www.therbootcamp.com @therbootcamp" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="baselrbootcamp.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Natural language processsing
+### The R Bootcamp <br/><a href='https://therbootcamp.github.io'>www.therbootcamp.com</a><br/><a href='https://twitter.com/therbootcamp'><span class="citation">@therbootcamp</span></a>
+### July 2018
+
+---
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;span&gt;
+&lt;a href="https://therbootcamp.github.io/"&gt;&lt;font color="#7E7E7E"&gt;Basel, July 2018&lt;/font&gt;&lt;/a&gt;
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;
+&lt;a href="https://therbootcamp.github.io/"&gt;&lt;font color="#7E7E7E"&gt;www.therbootcamp.com&lt;/font&gt;&lt;/a&gt;
+&lt;/span&gt;&lt;/div&gt; 
+
+---
+
+# Definitions 
+
+**Natural-language processing (NLP)** according to [Wikipedia](https://en.wikipedia.org/wiki/Natural-language_processing):
+
+&gt; Natural-language processing (NLP) is an area of computer science and artificial intelligence concerned with the **interactions between computers and human (natural) languages**, in particular how to program computers to fruitfully **process large amounts of natural language data**.
+
+&lt;br&gt;&lt;br&gt;
+
+**Natural language** according [Wikipedia](https://en.wikipedia.org/wiki/Natural_language):
+
+&gt;In neuropsychology, linguistics, and the philosophy of language, a **natural language or ordinary language** is any language that has **evolved naturally in humans** through use and repetition without conscious planning or premeditation. Natural languages can take different forms, such as speech or signing. They are distinguished from constructed and formal languages such as those used to program computers or to study logic.[1]
+
+---
+
+
+# Sources
+
+
+&lt;p align="center"&gt;
+  &lt;img scr="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/sources.png"&gt;
+&lt;/p&gt;
+
+&lt;img src="https://www.popsci.com/sites/popsci.com/files/images/2017/11/books.jpg" alt="test" height = 200&gt;
+&lt;img src="http://scidle.com/wp-content/uploads/2016/03/wikipedia.jpg" alt="test" height = 200&gt;
+&lt;img src="https://cdn.wccftech.com/wp-content/uploads/2018/02/Twitter.jpeg" alt="test" height = 200&gt;
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Facebook_New_Logo_%282015%29.svg/2000px-Facebook_New_Logo_%282015%29.svg.png" height = 200&gt;
+&lt;img src="https://blog.richmond.edu/richmondlawcdo/files/2017/02/Email.jpg" height = 200&gt;
+&lt;img src="http://www.vitecinc.com/wp-content/uploads/2016/04/voice-recognition-640x480.jpg" height = 200 width = 206&gt;
+
+
+---
+
+# Turing test
+
+.pull-left5[
+
+&gt;&lt;font size = 5&gt;&lt;i&gt;"A computer would deserve to be called intelligent if it could deceive a human into believing that it was human."&lt;/i&gt;&lt;br&gt;Alan Turing, 1950&lt;/font&gt;
+
+&lt;p align="center"&gt;
+  &lt;img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Turing_test_diagram.png" height="240px" vspace="10"&gt;&lt;/img&gt;&lt;br&gt;
+  &lt;a href="https://en.wikipedia.org/wiki/Alan_Turing"&gt;The imitation game&lt;/a&gt;
+&lt;/p&gt;
+
+]
+
+.pull-right45[
+
+&lt;p align="center"&gt;
+  &lt;img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Alan_Turing_az_1930-as_%C3%A9vekben.jpg" height="400px"&gt;&lt;/img&gt;&lt;br&gt;
+  Alan Turing, 1938, &lt;a href="https://en.wikipedia.org/wiki/Alan_Turing"&gt;Wikipedia&lt;/a&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# Google Duplex / Assistant
+
+.pull-left5[
+  &lt;iframe width="600" height="337" src="https://www.youtube.com/embed/bd1mEm2Fy08" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;high&gt;Sundar Pichai @ Google IO, May 2018&lt;/high&gt;
+  ]
+
+.pull-right5[
+  &lt;iframe width="600" height="337" src="https://www.youtube.com/embed/-qCanuYrR0g" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;high&gt;Google Ad, June 2018&lt;/high&gt;
+]
+
+---
+
+# Tools &amp; Methods
+
+.pull-left5[
+
+### Basics
+[**Tokenizing**](https://en.wikipedia.org/wiki/Word_segmentation)&lt;br&gt;
+[Stemming](https://en.wikipedia.org/wiki/Stemming)&lt;br&gt;
+[Part-of-speech tagging](https://en.wikipedia.org/wiki/Part-of-speech_tagging)&lt;br&gt;
+[Parsing](https://en.wikipedia.org/wiki/Parsing)&lt;br&gt;
+etc.
+
+### Semantics
+[Lexical semantics](https://en.wikipedia.org/wiki/Word_segmentation)&lt;br&gt;
+[Machine Translation](https://en.wikipedia.org/wiki/Machine_translation)&lt;br&gt;
+[Relationship extraction](https://en.wikipedia.org/wiki/Relationship_extraction)&lt;br&gt;
+[**Sentiment analysis**](https://en.wikipedia.org/wiki/Sentiment_analysis)&lt;br&gt;
+[**Topic analysis**](https://en.wikipedia.org/wiki/Topic_segmentation)&lt;br&gt;
+etc.
+
+]
+
+.pull-right5[
+
+### Discourse
+[Automatic summarization](https://en.wikipedia.org/wiki/Automatic_summarization)&lt;br&gt;
+[Discourse analysis](https://en.wikipedia.org/wiki/Discourse_analysis)&lt;br&gt;
+etc.
+
+### Speech
+[Speech recognition](https://en.wikipedia.org/wiki/Speech_recognition)&lt;br&gt;
+[Speech segmentation](https://en.wikipedia.org/wiki/Speech_segmentation)&lt;br&gt;
+[Relationship extraction](https://en.wikipedia.org/wiki/Relationship_extraction)&lt;br&gt;
+[Text-to-speech](https://en.wikipedia.org/wiki/Text-to-speech)&lt;br&gt;
+etc.
+
+]
+
+&lt;font size="2"&gt; from &lt;a href="https://en.wikipedia.org/wiki/Natural-language_processing"&gt;Wikipedia&lt;/a&gt;&lt;/font&gt;
+
+
+---
+
+# Encoding 
+
+.pull-left55[
+&lt;font size="5"&gt;1960: ASCII&lt;/font&gt;
+&lt;img src="https://www.asciitable.com/index/asciifull.gif"&gt;
+More info: [here](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/) &amp; [here](http://kunststube.net/encoding/)
+
+]
+
+.pull-right4[
+&lt;font size="5"&gt;1991: Unicode&lt;/font&gt;
+&lt;a href="http://unicode.org/"&gt;&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Unicode_logo.svg/512px-Unicode_logo.svg.png" width = 365&gt;&lt;/a&gt;
+
+]
+
+---
+&lt;br&gt;&lt;br&gt;
+
+| Character| Code Point | Encoding | Precision | Representation|
+|:------|:--------|:--------||:--------|
+|     `A`| `U+0041` | ASCII | fixed 7 bit | 1000001 |
+|     `A`| `U+0041` | UTF-8 | min 8 bit / 1 byte | 01000001 |
+|     `A`| `U+0041` | UTF-16 | min 16 bit / 2 byte | 00000000 01000001 |
+|     `A`| `U+0041` | UTF-32 | min 32 bit / 4 byte | 00000000 00000000 00000000 01000001 |
+|     `あ`| `U+3042` | ASCII | fixed 7 bit | - |
+|     `あ`| `U+3042` | UTF-8 | min 8 bit / 1 byte | 11100011 10000001 10000010 |
+|     `あ`| `U+3042` | UTF-16 | min 16 bit / 2 byte | 00110000 01000010 |
+|     `あ`| `U+3042` | UTF-32 | min 32 bit / 4 byte | 00000000 00000000 00110000 01000010 |
+| &lt;img src="https://images.emojiterra.com/google/android-oreo/512px/1f600.png" height="20px"&gt; | `U+1F600` | ASCII | fixed 7 bit | - |
+| &lt;img src="https://images.emojiterra.com/google/android-oreo/512px/1f600.png" height="20px"&gt; | `U+1F600` | UTF-8 | min 8 bit / 1 byte | 1111 0000 1001 1111 1001 1000 1000 0000 |
+| &lt;img src="https://images.emojiterra.com/google/android-oreo/512px/1f600.png" height="20px"&gt; | `U+1F600` | UTF-16 | min 16 bit / 2 byte | 1101 1000 0011 1101 1101 1110 0000 0000 |
+| &lt;img src="https://images.emojiterra.com/google/android-oreo/512px/1f600.png" height="20px"&gt; | `U+1F600` | UTF-32 | min 32 bit / 4 byte | - |
+
+
+---
+
+# Regular expressions 
+
+.pull-left45[
+
+According to [Wikipedia](https://en.wikipedia.org/wiki/Regular_expression):
+&gt;A regular expression, &lt;high&gt;regex or regexp&lt;/high&gt; (sometimes called a rational expression) is, in theoretical computer science and formal language theory, &lt;high&gt;a sequence of characters that define a search pattern&lt;/high&gt;. Usually this pattern is then used by &lt;high&gt;string searching algorithms&lt;/high&gt; for "find" or "find and replace" operations on strings.
+
+]
+
+.pull-right45[
+
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/2/23/The_river_effect_in_justified_text.jpg"&gt;
+
+&lt;p align="center"&gt;`(?&lt;=\.) {2,}(?=[A-Z])`&lt;p&gt;
+
+]
+
+---
+
+# Regular expressions
+
+.pull-left65[
+
+The `stringr` package provides a series of high performance regular expression functions based on the &lt;a href="http://site.icu-project.org/home"&gt;`ICU`&lt;/a&gt; C++ library. 
+
+
+```r
+str_*(string, pattern, ...)
+```
+
+| Function suffix | Use |
+|:---------------|:------------------------------|
+|   `str_detect`  | Test if pattern is present. |
+|   `str_count`   | Count number of pattern matches. |
+|   `str_locate`  | Find location of pattern. |
+|   `str_extract` | Extract strings matching pattern. |
+|   `str_replace` | Replace string matching pattern by other string. |
+|   `str_split`   | Split string around pattern. |
+
+]
+
+.pull-right25[
+
+&lt;img src="https://www.rstudio.com/wp-content/uploads/2014/04/stringr.png" height=200&gt;
+
+&lt;a href="http://site.icu-project.org/home"&gt;&lt;img src="http://www.unicode.org/announcements/ICU-logo.png" height=200&gt;&lt;/a&gt;
+
+
+]
+
+
+---
+
+# Regular expressions: Segmentation
+
+
+
+
+```r
+# text
+txt &lt;- "Happy families are all alike; every unhappy family is unhappy in its own way."
+
+# Tokenize
+str_extract_all(txt, "[A-Za-z]+")
+```
+
+```
+## [[1]]
+##  [1] "Happy"    "families" "are"      "all"      "alike"    "every"   
+##  [7] "unhappy"  "family"   "is"       "unhappy"  "in"       "its"     
+## [13] "own"      "way"
+```
+
+```r
+# Sentenize
+str_extract_all(txt, '[^[:space:]][^[.!?;]]*[.!?;]')
+```
+
+```
+## [[1]]
+## [1] "Happy families are all alike;"                  
+## [2] "every unhappy family is unhappy in its own way."
+```
+
+---
+
+# The Stark family: A Game of Thrones example
+
+&lt;p align="center"&gt;
+  &lt;img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/starks.png" height="450px"&gt;&lt;/img&gt;&lt;br&gt;
+&lt;/p&gt;
+
+
+---
+
+# Term-document matrix (TDM)
+
+Number of mention of &lt;high&gt;Stark family&lt;/high&gt; members across the &lt;high&gt;first seasons&lt;/high&gt; of [Game of Thrones](https://de.wikipedia.org/wiki/Game_of_Thrones)
+
+|        | Winter Is Coming| The Kingsroad| Lord Snow| Cripples, Bastards, and Broken Things| The Wolf and the Lion| A Golden Crown| You Win or You Die| The Pointy End| Baelor| Fire and Blood|
+|:-------|----------------:|-------------:|---------:|-------------------------------------:|---------------------:|--------------:|------------------:|--------------:|------:|--------------:|
+|jon     |                6|             3|         3|                                     6|                     5|              1|                  3|              3|      0|              0|
+|ned     |                5|             9|         8|                                     2|                     5|              0|                  6|              2|      0|              1|
+|robb    |                2|             1|         0|                                     1|                     0|              5|                  0|              5|      4|              5|
+|sansa   |                2|             3|         3|                                     4|                     0|              1|                  0|              5|      1|              0|
+|arya    |                1|            11|         1|                                     1|                     4|              0|                  0|              2|      0|              0|
+|bran    |                3|             4|         3|                                     3|                     2|              4|                  1|              1|      0|              4|
+|rickon  |                0|             1|         0|                                     0|                     0|              0|                  0|              0|      0|              1|
+|catelyn |                0|             1|         4|                                     1|                     1|              1|                  3|              2|      2|              0|
+
+
+---
+
+.pull-left65[
+
+# TDM: Applications
+
+&lt;high&gt;Search&lt;/high&gt; Identify most appropriate document for search queries, e.g.,&lt;br&gt;&lt;br&gt;"Who is Arya Stark" -&gt; 
+"Watch Episode The Kingsroad"
+
+&lt;high&gt;Semantic meaning&lt;/high&gt;
+Use documents as variables to learn about relationships between terms.
+
+"What is Robb Stark" -&gt; "Someone who is not Ned Stark"
+
+&lt;high&gt;Topic modeling&lt;/high&gt; 
+decompose matrix into topics (sets of words)
+
+Topic 1: Jon, Arya, Ned&lt;br&gt;
+Topic 2: Rickon, Arya, Bran
+
+&lt;high&gt;Spam detection&lt;/high&gt;
+Use terms as variables to detect properties of documents, e.g., spam status or quality of episode.
+
+"Which is the worst episode?"
+
+
+
+]
+
+.pull-right3[
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+|        | Winter Is Coming| The Kingsroad| Lord Snow|
+|:-------|----------------:|-------------:|---------:|
+|jon     |                6|             3|         3|
+|ned     |                5|             9|         8|
+|robb    |                2|             1|         0|
+|sansa   |                2|             3|         3|
+|arya    |                1|            11|         1|
+|bran    |                3|             4|         3| 
+|rickon  |                0|             1|         0|
+|catelyn |                0|             1|         4|
+
+
+]
+
+---
+
+# Term-document matrix (TDM)
+
+Number of mention of &lt;high&gt;Stark family&lt;/high&gt; members across the &lt;high&gt;first seasons&lt;/high&gt; of [Game of Thrones](https://de.wikipedia.org/wiki/Game_of_Thrones)
+
+|        | Winter Is Coming| The Kingsroad| Lord Snow| Cripples, Bastards, and Broken Things| The Wolf and the Lion| A Golden Crown| You Win or You Die| The Pointy End| Baelor| Fire and Blood|
+|:-------|----------------:|-------------:|---------:|-------------------------------------:|---------------------:|--------------:|------------------:|--------------:|------:|--------------:|
+|jon     |                6|             3|         3|                                     6|                     5|              1|                  3|              3|      0|              0|
+|ned     |                5|             9|         8|                                     2|                     5|              0|                  6|              2|      0|              1|
+|robb    |                2|             1|         0|                                     1|                     0|              5|                  0|              5|      4|              5|
+|sansa   |                2|             3|         3|                                     4|                     0|              1|                  0|              5|      1|              0|
+|arya    |                1|            11|         1|                                     1|                     4|              0|                  0|              2|      0|              0|
+|bran    |                3|             4|         3|                                     3|                     2|              4|                  1|              1|      0|              4|
+|rickon  |                0|             1|         0|                                     0|                     0|              0|                  0|              0|      0|              1|
+|catelyn |                0|             1|         4|                                     1|                     1|              1|                  3|              2|      2|              0|
+
+
+---
+
+# Tf-idf: Term frequency - inverse document frequency  
+
+Accounts (usually) for (a) differences in the number of &lt;high&gt;terms within document&lt;/high&gt; (e.g., `\(f_{t,d}/\sum{f_{t,d}}\)`) and (b) the frequency of &lt;high&gt;terms between documents&lt;/high&gt; (e.g., `\(log(N/n_{t})\)`). 
+
+|        | Winter Is Coming| The Kingsroad| Lord Snow| Cripples, Bastards, and Broken Things| The Wolf and the Lion| A Golden Crown| You Win or You Die| The Pointy End| Baelor| Fire and Blood|
+|:-------|----------------:|-------------:|---------:|-------------------------------------:|---------------------:|--------------:|------------------:|--------------:|------:|--------------:|
+|jon     |             0.07|          0.02|      0.03|                                  0.07|                  0.07|           0.02|               0.05|           0.03|   0.00|           0.00|
+|ned     |             0.06|          0.06|      0.08|                                  0.02|                  0.07|           0.00|               0.10|           0.02|   0.00|           0.02|
+|robb    |             0.04|          0.01|      0.00|                                  0.02|                  0.00|           0.15|               0.00|           0.09|   0.20|           0.16|
+|sansa   |             0.04|          0.03|      0.05|                                  0.08|                  0.00|           0.03|               0.00|           0.09|   0.05|           0.00|
+|arya    |             0.03|          0.17|      0.02|                                  0.03|                  0.12|           0.00|               0.00|           0.05|   0.00|           0.00|
+|bran    |             0.02|          0.01|      0.01|                                  0.02|                  0.01|           0.04|               0.01|           0.01|   0.00|           0.04|
+|rickon  |             0.00|          0.05|      0.00|                                  0.00|                  0.00|           0.00|               0.00|           0.00|   0.00|           0.15|
+|catelyn |             0.00|          0.01|      0.04|                                  0.01|                  0.01|           0.02|               0.05|           0.02|   0.06|           0.00|
+
+
+
+---
+
+.pull-left4[
+
+# Sentiment analysis
+
+Aims to identify the sentiment, i.e., &lt;high&gt;affective value&lt;/high&gt;, of natural language, based on...
+
+&lt;high&gt;Human judgment&lt;/high&gt;&lt;br&gt; Identify words that were judged by humans based on their sentiments and aggregate the values.
+
+&lt;high&gt;Heuristic rules&lt;/high&gt;&lt;br&gt; Complements the first approach with rules, e.g., negation. 
+
+&lt;high&gt;Machine learning&lt;/high&gt;&lt;br&gt; Learns a mapping of terms and document sentiment based on a training set of judged and estimated document sentiments.
+
+]
+
+.pull-right55[
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/sentiment.png" width="550"&gt;
+
+]
+
+
+---
+
+# Sentiment analysis
+
+.pull-left4[
+&lt;p align="center"&gt;
+  &lt;high&gt;Example&lt;/high&gt;
+&lt;/p&gt;
+
+|word   | score|
+|:--------|--------:|
+|i      |    NA|
+|could  |    NA|
+|kill   |    -3|
+|for    |    NA|
+|a      |    NA|
+|lovely |     3|
+|piece  |    NA|
+|of     |    NA|
+|yummy  |     3|
+|cake   |    NA|
+
+]
+
+.pull_right5[
+&lt;br&gt;
+Analysis of &lt;high&gt;Game of Thrones episode sentiment&lt;/high&gt; as a function episode's index within a season. 
+
+&lt;p align="center"&gt;
+
+&lt;img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/sentiment_got.png" width="550"&gt;
+
+&lt;/p&gt;
+
+]
+
+
+
+---
+
+# Packages
+
+.pull-left45[
+
+&lt;high&gt;Frameworks&lt;/high&gt;
+
+| Package   | Use |
+|:------------|:----------------|
+| `tm`       | text mining framework for R. [Paper](http://www.jstatsoft.org/v25/i05/) |
+| `openNLP`  |R interface to [OpenNLP](http://opennlp.sourceforge.net/) |
+| `tidytext` | text mining using tidy tools. |
+
+
+&lt;br&gt;&lt;high&gt;Semantics&lt;/high&gt;
+
+| Package   | Use |
+|:----------|:----------------|
+| `topicmodels`  | Latent Dirichlet Allocation and Correlated Topics Models |
+| `text2vec`  | tools for text vectorization and word embeddings. |
+
+
+]
+
+.pull-right45[
+
+&lt;high&gt;Tools&lt;/high&gt;
+
+| Package   | Use                   |
+|:---------------------|:-------------------------------------------------|
+|`stringr`  | regular expressions and basic text manipulation |
+|`hunspell`    | spelling correction |
+
+&lt;br&gt;&lt;high&gt;Data&lt;/high&gt;
+
+| Package   | Use |
+|:----------|:----------------|
+|`gutenbergr`  |  allows downloading books from the Project Gutenberg collection|
+|`rvest`    | scrape the internet |
+|`twitteR`    | access Twitter data  |
+|`Rfacebook`    | access Facebook data  |
+
+]
+
+
+
+
+---
+
+# Practical
+
+&lt;p&gt;&lt;font size=6&gt;&lt;b&gt;&lt;a href="https://therbootcamp.github.io/BaselRBootcamp_2018July/_sessions/LanguageProcessing/LanguageProcessing_practical.html"&gt;Link to practical&lt;/a&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
