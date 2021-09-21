@@ -21,7 +21,7 @@ The course is graded as PASS/FAIL. Students can receive a PASS if they fulfill t
 5. Present group project (twice)
 
 ## Agenda
-See <a href="">Schedule & Materials</a>
+See <a href="menu/materials">Schedule & Materials</a>
 
 ## Venue
 <a href="menu/zoom">Zoom</a>
