@@ -21,7 +21,7 @@ Use the following links to install the newest versions of Base-R und RStudio.
 
 For this course we will rely on various R packages that need to be installed. To do this run the following code within your R Console within R Studio.
 
-Important: to avoid problems during the installation of packages, please enter *n*, when you are asked to install a package from source.
+<b>Important</b>: to avoid problems during the installation of packages, please enter *n*, when you are asked to install a package from source.
 
 <font style="font-family: 'Lucida Console', Monaco, monospace;">
 source("http://bit.ly/nlp_package_installation")
