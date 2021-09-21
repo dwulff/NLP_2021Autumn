@@ -3,7 +3,7 @@ layout: page
 title: Installation instructions
 ---
 
-Please follow the instructions below to install all necessary software and complete the required training in R.
+Please follow the instructions below to install all necessary software and complete the required R Primers training.
 
 ## 1 - Install Base-R and RStudio on your laptops
 
