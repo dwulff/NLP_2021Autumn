@@ -15,6 +15,8 @@ Rather than other means of communication, please use Slack for all communication
 
 Please download and install Slack, and then join the workshop using this <a href="https://join.slack.com/t/slack-ji25555/shared_invite/zt-w5v312s4-vJJV~LYFLDg1DxnY1ifC6A"><b>link</b></a>.
 
+I will create individual channels for each group and invite you join them at a later point. 
+
 ## Project timeline
 
 <table cellspacing="0" cellpadding="0">
