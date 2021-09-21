@@ -45,7 +45,7 @@ I will create individual channels for each group and invite you join them at a l
     <td>In-class markdown presentations.</td>
   </tr>
   <tr>
-    <td >23.12. - 14.12.</td>
+    <td >23.11. - 14.12.</td>
     <td>Finalize project and presentation. Support meeting.</td>
   </tr>
   <tr>
