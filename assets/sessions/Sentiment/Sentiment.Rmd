@@ -6,13 +6,16 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
-  echo = TRUE, 
-  eval = TRUE,
+  echo = FALSE, 
+  eval = FALSE,
   message = FALSE,
   warning = FALSE)
+
+library(tidyverse)
+library(tidytext)
 ```
 
-<img src="https://dwulff.github.io/NLP_2020Autumn/assets/img/text_sm.png" width="100%"></img>
+<img src="https://dwulff.github.io/NLP_2021Autumn/assets/img/text_sm.png" width="100%"></img>
 
 # {.tabset}
 
@@ -40,7 +43,7 @@ library(tidytext)
 
 2. Define a function called `main_text_fun` that takes as input the filename (incl. path) and returns the `main_text` object from previous assignments containing the lower-case book text. 
 
-```{r}
+```{r, eval = TRUE}
 
 # function extracting main text
 main_text_fun = function(file){
@@ -68,7 +71,7 @@ main_text_fun = function(file){
 
 3. Create a vector containing filenames (incl. path) of the books. If the books are all in one folder you can use `list.files()` with `full.names = TRUE`.    
 
-```{r}
+```{r, eval = TRUE}
 # file
 files = list.files('books', full.names = T)
 
@@ -76,12 +79,12 @@ files = list.files('books', full.names = T)
 
 4. Use the vector and the `main_text_fun()` within a `sapply()` to extract the texts for all books and store them in an object called `texts`.   
 
-```{r}
+```{r, eval = TRUE}
 # process texts
 texts <- sapply(files, main_text_fun)
 ```
 
-5. Create a `tibble` using `tibble` that has two columns: a column called `book` containing a self-defined character vector of book names and a column called `text` containing the `texts` vector of books. Call the tibble `text_tbl`. When you subsequently print it it should like the output shown below. 
+5. Create a `tibble` using `tibble` that has two columns: a column called `book` containing a self-defined character vector of book names and a column called `text` containing the `texts` vector of books. Call the tibble `text_tbl`. When you print it it should like the output shown below. 
 
 ```{r, eval = TRUE}
 
@@ -151,7 +154,7 @@ token_tbl <- token_tbl %>%
 
 2. Use the code below to create a plot of your sentiment arcs. If the lines are too squiggly, play around with the constant (currently `10`) in the `dnorm()` function within `smooth()`.  
 
-```{r, eval = TRUE, echo = TRUE}
+```{r, echo = TRUE}
 # plot sentiment arcs
 ggplot(token_tbl, 
        aes(rel_pos, smooth_value,color=book)) +

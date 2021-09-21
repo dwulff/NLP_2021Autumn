@@ -6,13 +6,13 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
-  echo = TRUE, 
-  eval = TRUE,
+  echo = FALSE, 
+  eval = FALSE,
   message = FALSE,
   warning = FALSE)
 ```
 
-<img src="https://dwulff.github.io/NLP_2020Autumn/assets/img/text_sm.png" width="100%"></img>
+<img src="https://dwulff.github.io/NLP_2021Autumn/assets/img/text_sm.png" width="100%"></img>
 
 # {.tabset}
 

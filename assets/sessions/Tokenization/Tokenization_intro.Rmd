@@ -1,18 +1,18 @@
 ---
 title: "Tokenization"
-author: "<a href='https://dwulff.github.io/NLP_2020Autumn'>
+author: "<a href='https://dwulff.github.io/NLP_2021Autumn'>
     Natural language processing
   </a>
   <br>
-  <a href='https://dwulff.github.io/NLP_2020Autumn/menu/materials.html'>
+  <a href='https://dwulff.github.io/NLP_2021Autumn/menu/materials.html'>
     <i class='fas fa-clock' style='font-size:.9em;'></i>
   </a>&#8239; 
-  <a href='https://dwulff.github.io/NLP_2020Autumn'>
+  <a href='https://dwulff.github.io/NLP_2021Autumn'>
     <i class='fas fa-home' style='font-size:.9em;' ></i>
   </a>&#8239;
   <a href='mailto:dirk.wulff@unibas.ch'>
     <i class='fas fa-envelope' style='font-size: .9em;'></i>"
-date: "September 2020"
+date: "September 2021"
 output:
   xaringan::moon_reader:
     css: ["default", "baselrbootcamp.css"]
@@ -31,20 +31,21 @@ layout: true
     <span> 
       <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/>
     </span>
-    <a href="https://cdsbasel.github.io/dataanalytics/">
+    <a href="https://dwulff.github.io/NLP_2021Autumn/">
       <span style="padding-left:82px"> 
         <font color="#7E7E7E">
-          cdsbasel.github.io/dataanalytics/
+          dwulff.github.io/NLP_2021Autumn
         </font>
       </span>
     </a>
-    <a href="https://cdsbasel.github.io/dataanalytics/">
+    <a href="https://dwulff.github.io/NLP_2021Autumn/">
       <font color="#7E7E7E">
-       Data Analytics for Psychology and Business | April 2019
+       NLP seminar | September 2021
       </font>
     </a>
     </span>
   </div> 
+
 
 ---
 

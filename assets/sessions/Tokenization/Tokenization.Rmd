@@ -6,13 +6,13 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
-  echo = TRUE, 
-  eval = TRUE,
+  echo = FALSE, 
+  eval = FALSE,
   message = FALSE,
   warning = FALSE)
 ```
 
-<img src="https://dwulff.github.io/NLP_2020Autumn/assets/img/text_sm.png" width="100%"></img>
+<img src="https://dwulff.github.io/NLP_2021Autumn/assets/img/text_sm.png" width="100%"></img>
 
 # {.tabset}
 
@@ -29,9 +29,9 @@ In this assignment you will...
 
 ### A - Download Project
 
-1. Download this zipped <a href="https://dwulff.github.io/NLP_2020Autumn/assets/sessions/NLP_2020Autumn.zip"><b>project</b></a>.
+1. Download this zipped <a href="https://dwulff.github.io/NLP_2021Autumn/assets/sessions/NLP_2021Autumn.zip"><b>project</b></a>.
 
-2. Locate the downloaded file, unzip it and move it to a suitable location on your hard drive. 
+2. Locate the downloaded file, unzip it and move it to a suitable location on your hard drive, e.g., your desktop.
 
 ### B - Get book
 
@@ -44,7 +44,7 @@ In this assignment you will...
 
 ### C - Get started
 
-1. Open R Studio by double-clicking `NLP_2020Autumn.Rproj` within your project folder. 
+1. Open R Studio by double-clicking `NLP_2021Autumn.Rproj` within your project folder. 
 
 2. Open a new R markdown file with `html` output and save it as `Tokenization.Rmd` in your project folder.
 
