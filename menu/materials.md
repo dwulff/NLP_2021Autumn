@@ -36,6 +36,10 @@ e {
 
 <e>NO CLASS</e>
 
+Complete R primers:
+- <a href="https://rstudio.cloud/learn/primers/5">Iterate</a>
+- <a href="https://rstudio.cloud/learn/primers/6">Iterate</a>
+
 ## 19.10.
 
 <e>Semantics</e>
