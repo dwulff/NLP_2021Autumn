@@ -65,7 +65,7 @@ Subtitles: <a href="https://www.opensubtitles.org/de">Opensubtitles</a>
 
 ## Support meetings
 
-Each group must participate in least two 45 minute support meetings, one prior the markdown presentation and one prior the final presentation. Support meetings take place during the regular seminar slot, with two support meetings scheduled per slot. Support meetings will be scheduled on October 27 and November 24, respectively. If necessary, each group can request one additional 45 minute support meeting in one of two project work blocks. Given the limited time available the group should prepare a set of concrete questions, which should be submitted at least 24h prior to the support meeting.    
+Each group must participate in least two 45 minute support meetings, one prior the markdown presentation and one prior the final presentation. Support meetings take place during the regular seminar slot, with two support meetings scheduled per slot. Support meetings will be scheduled on November 2 and November 23, respectively. If necessary, each group can request one additional 45 minute support meeting in one of two project work blocks. Given the limited time available the group should prepare a set of concrete questions, which should be submitted at least 24h prior to the support meeting.    
 
 ## Presentations
 
