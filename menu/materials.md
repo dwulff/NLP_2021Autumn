@@ -58,7 +58,7 @@ Complete R primers:
 
 ## 02.11.
 
-<e>Project proposals</e>
+<e>Project proposal presentations</e>
 
 ## 02.10. - 23.11.
 
