@@ -35,7 +35,7 @@ If you do not know how to run this code in R please let us know asap.
 
 If you haven't done so already, the following <a href="https://rstudio.cloud/learn/primers">RStudio Primers</a>
 
-1) The Basics
-2) Work with Data
-3) Visualize Data
+1) The Basics<br>
+2) Work with Data<br>
+3) Visualize Data<br>
 4) Tidy your Data
