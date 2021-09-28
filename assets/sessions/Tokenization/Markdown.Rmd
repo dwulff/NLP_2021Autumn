@@ -1078,5 +1078,5 @@ read_csv("../1_Data/daten.csv")
 
 class: middle, center
 
-<h1><a href="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Reporting/Reporting_practical.html">Practical</a></h1>
+<h1><a href="https://dwulff.github.io/NLP_2021Autumn/menu/materials.html">Course page</a></h1>
 
