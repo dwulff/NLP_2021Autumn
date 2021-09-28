@@ -53,7 +53,7 @@ layout: true
 
 .pull-left55[
 <font size="5">1960: ASCII</font>
-<img src="https://www.asciitable.com/index/asciifull.gif">
+<img src="https://www.asciitable.com/asciifull.gif">
 More info: [here](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/) & [here](http://kunststube.net/encoding/)
 
 ]
