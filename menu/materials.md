@@ -22,8 +22,8 @@ e {
 <e>Tokenization & Markdown</e>
 
 - Preparation: Complete <a href="menu/installation"><b>installation</b></a> instructions
-- Presentation: <a href="https://dwulff.github.io/NLP_2020Autumn/assets/sessions/Tokenization/Tokenization_intro.html">Tokenization</a>, <a href="https://dwulff.github.io/NLP_2020Autumn/assets/sessions/Tokenization/Markdown_intro.html">Markdown</a>
-- Assignment: <a href="https://dwulff.github.io/NLP_2020Autumn/assets/sessions/Tokenization/Tokenization.html">Tokenization</a> (<a href="mailto:nlp2020autumn@gmail.com?subject=Tokenization%20assignment" class="button"><b>submit .html</b></a>)
+- Presentation: <a href="https://dwulff.github.io/NLP_2021Autumn/assets/sessions/Tokenization/Tokenization_intro.html">Tokenization</a>, <a href="https://dwulff.github.io/NLP_2021Autumn/assets/sessions/Tokenization/Markdown_intro.html">Markdown</a>
+- Assignment: <a href="https://dwulff.github.io/NLP_2021Autumn/assets/sessions/Tokenization/Tokenization.html">Tokenization</a> (<a href="mailto:nlp2020autumn@gmail.com?subject=Tokenization%20assignment" class="button"><b>submit .html</b></a>)
 
 ## 05.10.
 
