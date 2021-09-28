@@ -46,21 +46,20 @@ layout: true
 
 
 
-
-# What is Markdown?
+# Was ist Markdown?
 
 .pull-left4[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;Developed by John Gruber and Aaron Swartz in 2004.&lt;br&gt;&lt;br&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Entwickelt von John Gruber and Aaron Swartz in 2004.&lt;br&gt;&lt;br&gt;
   "&lt;high&gt;easy-to-read&lt;/high&gt; and &lt;high&gt;easy-to-write&lt;/high&gt; plain text format, [...] convert it to structurally valid XHTML (or HTML)"&lt;/span&gt;&lt;/li&gt; 
-  &lt;li class="m2"&gt;&lt;span&gt;Simple &lt;high&gt;Syntax for the layout&lt;/high&gt; of documents.&lt;/span&gt;&lt;/li&gt;  
+  &lt;li class="m2"&gt;&lt;span&gt;Einfache &lt;high&gt;Syntax für die Gestaltung&lt;/high&gt; von Dokumenten.&lt;/span&gt;&lt;/li&gt;  
   &lt;ul&gt;
-    &lt;li&gt;&lt;span&gt;Text in bold and italics&lt;/span&gt;&lt;/li&gt;   
-    &lt;li&gt;&lt;span&gt;Lists&lt;/span&gt;&lt;/li&gt;  
-    &lt;li&gt;&lt;span&gt;Headings&lt;/span&gt;&lt;/li&gt; 
+    &lt;li&gt;&lt;span&gt;Text in fett und kursiv&lt;/span&gt;&lt;/li&gt;   
+    &lt;li&gt;&lt;span&gt;Listen&lt;/span&gt;&lt;/li&gt;  
+    &lt;li&gt;&lt;span&gt;Überschriften&lt;/span&gt;&lt;/li&gt; 
     &lt;li&gt;&lt;span&gt;Links&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;span&gt;Pictures&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Bilder&lt;/span&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/ul&gt;
 
@@ -79,18 +78,19 @@ layout: true
 
 ---
 
-# What is RMarkdown?
+# Was ist R Markdown?
 
 .pull-left4[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;Markdown is used for &lt;high&gt;layout of dynamic documents&lt;/high&gt; with embedded ...&lt;/span&gt;&lt;/li&gt;&lt;br&gt; 
+  &lt;li class="m1"&gt;&lt;span&gt;Verwendet Markdown zum &lt;high&gt;Gestalten dynamischer Dokumente&lt;/high&gt; mit eingebetteten...&lt;/span&gt;&lt;/li&gt;&lt;br&gt; 
   &lt;ul&gt;
     &lt;li&gt;&lt;span&gt;R code chunks&lt;/span&gt;&lt;/li&gt;
     &lt;li&gt;&lt;span&gt;R inline code&lt;/span&gt;&lt;/li&gt;   
-    &lt;li&gt;&lt;span&gt;Output from statistical models&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;span&gt;Tables&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;span&gt;Visualization&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Statistischen Outputs&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Tabellen&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Visualisierungen&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;etc.&lt;/span&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/ul&gt;
 
@@ -109,25 +109,25 @@ layout: true
 
 .pull-left3[
 
-# Types of documents
+# Arten des Berichts
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;RMarkdown allows the creation of different &lt;high&gt;document types&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;RMarkdown ermöglicht Erstellung und Gestaltung unterschiedlicher &lt;high&gt;Berichttypen&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
   &lt;ul&gt;
-    &lt;li&gt;&lt;span&gt;Text documents&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;span&gt;Presentations&lt;/span&gt;&lt;/li&gt;   
+    &lt;li&gt;&lt;span&gt;Dokumente&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Präsentationen&lt;/span&gt;&lt;/li&gt;   
     &lt;li&gt;&lt;span&gt;Dashboards (Cockpits)&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;span&gt;Books&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;span&gt;Web-Pages&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Bücher&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Webseiten&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;etc.&lt;/span&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/ul&gt;
-
 
 ]
 
 .pull-right6[
 
-&lt;br&gt;&lt;br&gt;
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
 &lt;p align = "center"&gt;
   &lt;img src="image/types.png"&gt;
 &lt;/p&gt;
@@ -136,12 +136,12 @@ layout: true
 
 ---
 
-# Components of RMarkdown
+# R Markdown Komponenten
 
 .pull-left4[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;A RMarkdown script consists of multiple &lt;high&gt;components&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;RMarkdown Skripte bestehen aus mehreren &lt;high&gt;Komponenten&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:10px" width=100%&gt;
@@ -149,10 +149,10 @@ layout: true
   &lt;col width="60%"&gt;
 &lt;tr&gt;
   &lt;td bgcolor="white"&gt;
-    &lt;b&gt;Component&lt;/b&gt;
+    &lt;b&gt;Komponente&lt;/b&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-    &lt;b&gt;Description&lt;/b&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -160,8 +160,8 @@ layout: true
   &lt;mono&gt;YAML&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  &lt;b&gt;Y&lt;/b&gt;AML &lt;b&gt;A&lt;/b&gt;in't &lt;b&gt;M&lt;/b&gt;arkup &lt;b&gt;L&lt;/b&gt;anguage&lt;br&gt;
-  &lt;high&gt;Document setup&lt;/high&gt;
+  &lt;b&gt;Y&lt;/b&gt;AML &lt;b&gt;A&lt;/b&gt;in't &lt;b&gt;M&lt;/b&gt;arkup &lt;b&gt;L&lt;/b&gt;anguage&lt;br&gt;&lt;br&gt;
+  &lt;high&gt;Dokumenteinstellungen&lt;/high&gt;
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -169,9 +169,9 @@ layout: true
   &lt;mono&gt;Setup chunk&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  &lt;high&gt;Chunk&lt;/high&gt; features&lt;br&gt;
-  &lt;high&gt;Packages&lt;/high&gt; load&lt;br&gt;
-  &lt;high&gt;Data&lt;/high&gt; load
+  &lt;high&gt;Chunks&lt;/high&gt; einstellen&lt;br&gt;
+  &lt;high&gt;Pakete&lt;/high&gt; laden&lt;br&gt;
+  &lt;high&gt;Daten&lt;/high&gt; laden
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -179,8 +179,8 @@ layout: true
   &lt;mono&gt;Markdown&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  &lt;high&gt;Headings&lt;/high&gt;&lt;br&gt;
-  &lt;high&gt;Text&lt;/high&gt; with decoration 
+  &lt;high&gt;Überschriften&lt;/high&gt;&lt;br&gt;
+  &lt;high&gt;Text&lt;/high&gt; mit Hervorhebungen
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -211,14 +211,14 @@ layout: true
 .pull-left4[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;One RMarkdown document can be translated into multiple output &lt;high&gt;formats&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;RMarkdown kann in verschiedene &lt;high&gt;Dateitypen&lt;/high&gt; übersetzt werden.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
     &lt;ul&gt;
     &lt;li&gt;&lt;span&gt;PDF&lt;/span&gt;&lt;/li&gt;
     &lt;li&gt;&lt;span&gt;HTML&lt;/span&gt;&lt;/li&gt;   
     &lt;li&gt;&lt;span&gt;Word&lt;/span&gt;&lt;/li&gt;
     &lt;li&gt;&lt;span&gt;PowerPoint&lt;/span&gt;&lt;/li&gt;
   &lt;/ul&gt;&lt;br&gt;
-  &lt;li class="m2"&gt;&lt;span&gt;During theses steps RMarkdown will be translated &lt;high&gt;multiple times&lt;/high&gt;. This process comes with certain restrictions.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Für die Übersetzung wird &lt;high&gt;RMarkdown mehrfach übersetzt&lt;/high&gt;, was gewisse Einschränkungen mit sich bringt.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
 &lt;/ul&gt;
 
 ]
@@ -238,8 +238,8 @@ layout: true
 .pull-left4[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;HTML is the &lt;high&gt;universal framework&lt;/high&gt; for documents, presentations and dashboards.&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="m2"&gt;&lt;span&gt;&lt;high&gt;Export to PDF&lt;/high&gt; is possible, with minimal restrictions.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;HTML ist der &lt;high&gt;universelle Framework&lt;/high&gt; für Dokumente, Präsentationen, und v.a. Dashboards.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;&lt;high&gt;Export zu PDF&lt;/high&gt; ist, mit minimalen Einschränkungen, möglich.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
 &lt;/ul&gt;
 
 ]
@@ -260,8 +260,8 @@ layout: true
 
 &lt;ul&gt;
   &lt;li class="m1"&gt;&lt;span&gt;&lt;b&gt;H&lt;/b&gt;yper&lt;b&gt;T&lt;/b&gt;ext &lt;b&gt;M&lt;/b&gt;arkup &lt;b&gt;L&lt;/b&gt;anguage.&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="m2"&gt;&lt;span&gt;The lingua franca of the &lt;high&gt;World Wide Web&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="m3"&gt;&lt;span&gt;Can be extended with &lt;high&gt;CSS&lt;/high&gt; (Cascading Style Sheets) for specialized formats.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Das Format des &lt;high&gt;World Wide Webs&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3"&gt;&lt;span&gt;Kann komfortabel durch &lt;high&gt;CSS&lt;/high&gt; (Cascading Style Sheets) formartiert werden.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 ]
@@ -277,13 +277,13 @@ layout: true
 
 ---
 
-# Rendering
+# R Markdown
 
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;HTML is interpreted by RStudio (or a browsern) and presented as a formatted document.&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="m2"&gt;&lt;span&gt;&lt;high&gt;Rstudio&lt;/high&gt; can show rendered documents in the viewer window. &lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;HTML ist der &lt;high&gt;universelle Framework&lt;/high&gt; für Dokumente, Präsentationen, und v.a. Dashboards.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;&lt;high&gt;Export zu PDF&lt;/high&gt; ist, mit minimalen Einschränkungen, möglich.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
 &lt;/ul&gt;
 
 ]
@@ -299,12 +299,12 @@ layout: true
 
 ---
 
-# Headings
+# Überschriften
 
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;Different level headings are represented with one or multiple &lt;mono&gt;#&lt;/mono&gt;.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Überschriften verschiedener &lt;high&gt;Ebenen&lt;/high&gt; werden durch verschieden viele &lt;mono&gt;#&lt;/mono&gt; ausgedrückt.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%&gt;
@@ -315,7 +315,7 @@ layout: true
     &lt;b&gt;Markdown&lt;/b&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-    &lt;b&gt;Description&lt;/b&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -323,7 +323,7 @@ layout: true
   &lt;mono&gt;# text&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  Level 1
+  Ebene 1
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -331,7 +331,7 @@ layout: true
   &lt;mono&gt;## text&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  Level 2
+  Ebene 2
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -344,10 +344,10 @@ layout: true
 &lt;/tr&gt;
 &lt;tr&gt;
   &lt;td bgcolor="white"&gt;
-  &lt;mono&gt;##### text&lt;/mono&gt;
+  &lt;mono&gt;##### txt&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  Level 5
+  Ebene 5
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;/table&gt;
@@ -365,12 +365,12 @@ layout: true
 
 ---
 
-# Headings
+# Überschriften
 
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;Different level headings are represented with one or multiple &lt;mono&gt;#&lt;/mono&gt;.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Überschriften verschiedener &lt;high&gt;Ebenen&lt;/high&gt; werden durch verschieden viele &lt;mono&gt;#&lt;/mono&gt; ausgedrückt.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%&gt;
@@ -381,7 +381,7 @@ layout: true
     &lt;b&gt;Markdown&lt;/b&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-    &lt;b&gt;Description&lt;/b&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -389,7 +389,7 @@ layout: true
   &lt;mono&gt;# text&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  Level 1
+  Ebene 1
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -397,7 +397,7 @@ layout: true
   &lt;mono&gt;## text&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  Level 2
+  Ebene 2
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -410,14 +410,13 @@ layout: true
 &lt;/tr&gt;
 &lt;tr&gt;
   &lt;td bgcolor="white"&gt;
-  &lt;mono&gt;##### text&lt;/mono&gt;
+  &lt;mono&gt;##### txt&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  Level 5
+  Ebene 5
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;/table&gt;
-
 
 ]
 
@@ -432,12 +431,12 @@ layout: true
 
 ---
 
-# Emphasize text
+# Hervorhebung
 
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;The usage of special characters allows &lt;high&gt;text- and code-related&lt;/high&gt; emphasis&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Verschiedene Zeichen erlauben &lt;high&gt;text- und code-bezogene&lt;/high&gt; Hervorhebungen.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%&gt;
@@ -448,7 +447,7 @@ layout: true
     &lt;b&gt;Markdown&lt;/b&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-    &lt;b&gt;Description&lt;/b&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -456,7 +455,7 @@ layout: true
   &amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  italic
+  Kursiv
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -464,7 +463,7 @@ layout: true
   &amp;ast;&amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;&amp;ast;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  bold
+  Fett
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -472,7 +471,7 @@ layout: true
   &amp;ast;&amp;ast;&amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;&amp;ast;&amp;ast;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  italic and bold 
+  Kursiv und Fett 
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -480,7 +479,7 @@ layout: true
   &amp;grave;&lt;mono&gt;text&lt;/mono&gt;&amp;grave;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  code
+  Code
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -488,7 +487,7 @@ layout: true
   &amp;grave;&lt;mono&gt;r "text"&lt;/mono&gt;&amp;grave;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  inline code
+  inline Code
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;/table&gt;
@@ -506,12 +505,12 @@ layout: true
 
 ---
 
-# Emphasize text
+# Hervorhebung
 
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;The usage of special characters allows &lt;high&gt;text- and code-related&lt;/high&gt; emphasis&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Verschiedene Zeichen erlauben &lt;high&gt;text- und code-bezogene&lt;/high&gt; Hervorhebungen.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%&gt;
@@ -522,7 +521,7 @@ layout: true
     &lt;b&gt;Markdown&lt;/b&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-    &lt;b&gt;Description&lt;/b&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -530,7 +529,7 @@ layout: true
   &amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  italic
+  Kursiv
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -538,7 +537,7 @@ layout: true
   &amp;ast;&amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;&amp;ast;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  bold
+  Fett
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -546,7 +545,7 @@ layout: true
   &amp;ast;&amp;ast;&amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;&amp;ast;&amp;ast;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  italic and bold 
+  Kursiv und Fett 
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -554,7 +553,7 @@ layout: true
   &amp;grave;&lt;mono&gt;text&lt;/mono&gt;&amp;grave;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  code
+  Code
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -562,7 +561,7 @@ layout: true
   &amp;grave;&lt;mono&gt;r "text"&lt;/mono&gt;&amp;grave;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  inline code
+  inline Code
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;/table&gt;
@@ -581,12 +580,12 @@ layout: true
 
 ---
 
-# Emphasize text
+# Hervorhebung
 
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;The usage of special characters allows &lt;high&gt;text- and code-related&lt;/high&gt; emphasis&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Verschiedene Zeichen erlauben &lt;high&gt;text- und code-bezogene&lt;/high&gt; Hervorhebungen.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%&gt;
@@ -597,7 +596,7 @@ layout: true
     &lt;b&gt;Markdown&lt;/b&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-    &lt;b&gt;Description&lt;/b&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -605,7 +604,7 @@ layout: true
   &amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  italic
+  Kursiv
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -613,7 +612,7 @@ layout: true
   &amp;ast;&amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;&amp;ast;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  bold
+  Fett
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -621,7 +620,7 @@ layout: true
   &amp;ast;&amp;ast;&amp;ast;&lt;mono&gt;text&lt;/mono&gt;&amp;ast;&amp;ast;&amp;ast;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  italic and bold 
+  Kursiv und Fett 
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -629,7 +628,7 @@ layout: true
   &amp;grave;&lt;mono&gt;text&lt;/mono&gt;&amp;grave;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  code
+  Code
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -637,7 +636,7 @@ layout: true
   &amp;grave;&lt;mono&gt;r "text"&lt;/mono&gt;&amp;grave;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  inline code
+  inline Code
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;/table&gt;
@@ -662,8 +661,8 @@ layout: true
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;&lt;high&gt;Number and word &lt;/high&gt; can be parameterised with inline code .&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="m2"&gt;&lt;span&gt;inline code can contain any R code, similar to &lt;high&gt;code &lt;mono&gt;chunks&lt;/mono&gt;&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;&lt;high&gt;Zahlen und Wörter&lt;/high&gt; im Text können durch inline Code parametrisiert werden.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;inline Code kann wie ein &lt;high&gt;Code &lt;mono&gt;chunks&lt;/mono&gt;&lt;/high&gt; beliebigen R Code enthalten.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 ]
@@ -684,8 +683,8 @@ layout: true
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;A &lt;high&gt;code &lt;mono&gt;chunk&lt;/mono&gt;&lt;/high&gt; can contain any R Code.&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="m2"&gt;&lt;span&gt;Code chunks are fine tuned with &lt;high&gt;additional arguments&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;&lt;high&gt;Zahlen und Wörter&lt;/high&gt; im Text können durch inline Code parametrisiert werden.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;inline Code kann wie ein &lt;high&gt;Code &lt;mono&gt;chunks&lt;/mono&gt;&lt;/high&gt; beliebigen R Code enthalten.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 ]
@@ -710,10 +709,10 @@ layout: true
   &lt;col width="40%"&gt;
 &lt;tr&gt;
   &lt;td bgcolor="white"&gt;
-    &lt;b&gt;Argument&lt;/b&gt;
+    &lt;b&gt;Markdown&lt;/b&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-    &lt;b&gt;Description&lt;/b&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -721,7 +720,7 @@ layout: true
   &lt;mono&gt;echo=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  show/hide &lt;high&gt;code&lt;/high&gt;
+  Zeige/Verstecke &lt;high&gt;Code&lt;/high&gt;
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -729,7 +728,7 @@ layout: true
   &lt;mono&gt;eval=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  execute/don't execute &lt;high&gt;code&lt;/high&gt;
+  &lt;high&gt;Code&lt;/high&gt; ausführen/nicht-ausf.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -737,7 +736,7 @@ layout: true
   &lt;mono&gt;include=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;high&gt;output&lt;/high&gt; 
+  Inkludiere/exkludiere &lt;high&gt;allen Output&lt;/high&gt; 
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -745,7 +744,7 @@ layout: true
   &lt;mono&gt;message=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;highm&gt;messages&lt;/highm&gt;
+  Inkludiere/exkludiere &lt;highm&gt;messages&lt;/highm&gt; im Output
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -753,7 +752,7 @@ layout: true
   &lt;mono&gt;warning=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;highm&gt;warnings&lt;/highm&gt;
+  Inkludiere/exkludiere &lt;highm&gt;warnings&lt;/highm&gt; im Output
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;/table&gt;
@@ -784,10 +783,10 @@ layout: true
   &lt;col width="40%"&gt;
 &lt;tr&gt;
   &lt;td bgcolor="white"&gt;
-    &lt;b&gt;Argument&lt;/b&gt;
+    &lt;b&gt;Markdown&lt;/b&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-    &lt;b&gt;Description&lt;/b&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -795,7 +794,7 @@ layout: true
   &lt;mono&gt;echo=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  show/hide &lt;high&gt;code&lt;/high&gt;
+  Zeige/Verstecke &lt;high&gt;Code&lt;/high&gt;
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -803,7 +802,7 @@ layout: true
   &lt;mono&gt;eval=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  execute/don't execute &lt;high&gt;code&lt;/high&gt;
+  &lt;high&gt;Code&lt;/high&gt; ausführen/nicht-ausf.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -811,7 +810,7 @@ layout: true
   &lt;mono&gt;include=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;high&gt;output&lt;/high&gt; 
+  Inkludiere/exkludiere &lt;high&gt;allen Output&lt;/high&gt; 
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -819,7 +818,7 @@ layout: true
   &lt;mono&gt;message=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;highm&gt;messages&lt;/highm&gt;
+  Inkludiere/exkludiere &lt;highm&gt;messages&lt;/highm&gt; im Output
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -827,7 +826,7 @@ layout: true
   &lt;mono&gt;warning=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;highm&gt;warnings&lt;/highm&gt;
+  Inkludiere/exkludiere &lt;highm&gt;warnings&lt;/highm&gt; im Output
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;/table&gt;
@@ -857,10 +856,10 @@ layout: true
   &lt;col width="40%"&gt;
 &lt;tr&gt;
   &lt;td bgcolor="white"&gt;
-    &lt;b&gt;Argument&lt;/b&gt;
+    &lt;b&gt;Markdown&lt;/b&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-    &lt;b&gt;Description&lt;/b&gt;
+    &lt;b&gt;Beschreibung&lt;/b&gt;
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -868,7 +867,7 @@ layout: true
   &lt;mono&gt;echo=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  show/hide &lt;high&gt;code&lt;/high&gt;
+  Zeige/Verstecke &lt;high&gt;Code&lt;/high&gt;
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -876,7 +875,7 @@ layout: true
   &lt;mono&gt;eval=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  execute/don't execute &lt;high&gt;code&lt;/high&gt;
+  &lt;high&gt;Code&lt;/high&gt; ausführen/nicht-ausf.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -884,7 +883,7 @@ layout: true
   &lt;mono&gt;include=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;high&gt;output&lt;/high&gt; 
+  Inkludiere/exkludiere &lt;high&gt;allen Output&lt;/high&gt; 
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -892,7 +891,7 @@ layout: true
   &lt;mono&gt;message=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;highm&gt;messages&lt;/highm&gt;
+  Inkludiere/exkludiere &lt;highm&gt;messages&lt;/highm&gt; im Output
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -900,7 +899,7 @@ layout: true
   &lt;mono&gt;warning=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;highm&gt;warnings&lt;/highm&gt;
+  Inkludiere/exkludiere &lt;highm&gt;warnings&lt;/highm&gt; im Output
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;/table&gt;
@@ -925,7 +924,8 @@ layout: true
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;In the setup-chunk global &lt;high&gt;settings for all other chunks &lt;/high&gt; can be defined.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Im Setup-Chunk können &lt;high&gt;Settings für alle Chunks&lt;/high&gt; definiert werden vorgenommen werden.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Weiterführende Funktionen verfügbar.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 ]
@@ -946,8 +946,10 @@ layout: true
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;In the setup-chunk global &lt;high&gt;settings for all other chunks &lt;/high&gt; can be defined.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Im Setup-Chunk können &lt;high&gt;Settings für alle Chunks&lt;/high&gt; vorgenommen werden.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Weiterführende Funktionen verfügbar.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
 ]
 
 .pull-right6[
@@ -967,7 +969,8 @@ layout: true
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;In the setup-chunk global &lt;high&gt;settings for all other chunks &lt;/high&gt; can be defined.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Im Setup-Chunk können &lt;high&gt;Settings für alle Chunks&lt;/high&gt; vorgenommen werden.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Weiterführende Funktionen verfügbar.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 ]
@@ -989,7 +992,8 @@ layout: true
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;In the setup-chunk global &lt;high&gt;settings for all other chunks &lt;/high&gt; can be defined.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Im Setup-Chunk können &lt;high&gt;Settings für alle Chunks&lt;/high&gt; vorgenommen werden.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Weiterführende Funktionen verfügbar.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 ]
@@ -1011,8 +1015,10 @@ layout: true
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;In the setup-chunk global &lt;high&gt;settings for all other chunks &lt;/high&gt; can be defined.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Im Setup-Chunk können &lt;high&gt;Settings für alle Chunks&lt;/high&gt; vorgenommen werden.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Weiterführende Funktionen verfügbar.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
 ]
 
 .pull-right6[
@@ -1026,22 +1032,25 @@ layout: true
 
 ---
 
-# Relative path
+# Relativer Pfad
 
 .pull-left35[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;Markdown documents do not access the regular &lt;high&gt;working directory&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
-  &lt;li class="m2"&gt;&lt;span&gt;Paths in RMarkdown have to be &lt;high&gt;relative to the .Rmd&lt;/high&gt; file.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Markdown Dokumente greifen nicht auf das übliche &lt;high&gt;working directory&lt;/high&gt; zu.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Pfade in RMarkdown müssen &lt;high&gt;relativ zur Position des .Rmd&lt;/high&gt; Datei definiert werden.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;br&gt;
 ```R
-# Read Data
+# Lese Daten
 read_csv("../1_Data/daten.csv")
+
+# Lese CSS (mehr dazu später)
+css: "../2_Assets/styling.csv")
 ```
 
-] 
+]
 
 .pull-right55[
 &lt;br&gt;
@@ -1051,11 +1060,12 @@ read_csv("../1_Data/daten.csv")
 
 ]
 
+
 ---
 
 class: middle, center
 
-&lt;h1&gt;&lt;a href="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Reporting/Reporting_practical.html"&gt;Practical&lt;/a&gt;&lt;/h1&gt;
+&lt;h1&gt;&lt;a href=https://dwulff.github.io/NLP_2021Autumn/menu/materials.html&gt;Materials&lt;/a&gt;&lt;/h1&gt;
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
