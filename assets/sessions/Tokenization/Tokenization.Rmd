@@ -87,7 +87,7 @@ str_sub(text, 1, 1000)
 
 ```{r}
 # cut text into sections
-text_split = str_split(text, '\\*{3}[:print:]*\\*{3}')
+text_split = str_split(text, '\\*{3}[:print:]+\\*{3}')
 
 # count characters per section
 nchar(text_split[[1]])
@@ -119,8 +119,11 @@ length(tokens)
 
 
 ```{r}
+tab = table(tokens) %>% sort(decreasing = T)
+tab = tab[1:500]
+
 # to lower
-wordcloud(tokens)
+wordcloud(names(tab), freq = as.numeric(tab), scale = c(10, .1))
 ```
 
 
