@@ -2,6 +2,8 @@
 title: "Semantics"
 output:
   html_document: default
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -83,7 +85,9 @@ token_freq = table(unlist(tokens))
 
 ```{r}
 # to be retained tokens
-retain = names(token_freq)[token_freq > 4 & !names(token_freq) %in% stopwords()]
+retain = names(token_freq)[token_freq > 4 & 
+                             !names(token_freq) %in% stopwords() &
+                             nchar(names(token_freq)) > 2]
 ```
 
 5. Run a loop iterating from 1 to length of `tokens`. At each iteration overwrite `tokens[[i]]` with a vector containing only those words in `tokens[[i]]` that exist in `retain`. 
@@ -163,7 +167,7 @@ p_tdm_expected = outer(p_terms, p_docs)
 
 ```{r}
 # compute pmi
-pmi = log2(p_tdm / outer(p_terms, p_docs))
+pmi = log2(p_tdm / p_tdm_expected)
 ```
 
 5. Finally, create a new matrix `ppmi` from `pmi` and set all values smaller than `0` in `ppmi` to `0`. Et voila, you have computed the positive pointwise mutual information. 
